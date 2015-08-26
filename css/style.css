@@ -3,21 +3,19 @@
 }
 
 #nonexist {
+	background-color: #ff3232;
 	display: none;
 }
 
-#searchBox {
-	width: 100%;
-	padding: 0 30px 0 30px;
-	text-align: center;
-}
 #search {
-	
-    width: 400px;
+	width: 400px;
 }
 
 #init {
 	width: 100%;
 	text-align: center;
 }
-	
+
+#roomIDButton:hover {
+	cursor: default;
+}
