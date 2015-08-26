@@ -61,7 +61,7 @@ window.onload = function() {
 
       if(output == "nonexistent") {
         console.log("nonexistent room");
-        $("#nonexist").show().delay(300).hide();
+        $("#nonexist").show();
         return;
       }
       updateClientList(output["clientsList"]); 
