@@ -67,7 +67,7 @@ window.onload = function() {
       for(var i in cList) {
         thisRoom.append("<li>" + cList[i] + "</li>");
       }
-      thisRoom.append("</ul>");
+      thisRoom.show().append("</ul>");
       idButton.prop('value', roomID);
     });
 }
