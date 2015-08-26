@@ -33,7 +33,8 @@ window.onload = function() {
         var time, rate, remainingTime;
         time = player.getCurrentTime();
 
-        socket.emit("currentTime", {currentTime: time});
+        //socket.emit("currentTime", {currentTime: time});
+        console.log("change")
         if (event.data == YT.PlayerState.PLAYING) {
             
             /*if (time + .4 < stopPlayAt) {
@@ -49,8 +50,8 @@ window.onload = function() {
     }
 
     socket.on('currentTimeDone', function(data) {
-        console.log(data["currentTime"]);
-        player.seekTo(parseInt(data["currentTime"]));
+        console.log("currentTimedone " + data["currentTime"]);
+        player.seekTo(120);
     });
 
     socket.on('joinRoomDone', function(output) {
