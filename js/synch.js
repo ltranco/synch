@@ -14,10 +14,13 @@ window.onload = function() {
 
     pproom.click(function() {
         var text = pproom.text() == "Pause entire room" ? "Play entire room" : "Pause entire room";
+        console.log(text);
         if(text == "Pause entire room") {
+            console.log("pause room");
             socket.emit("pause");    
         }
         else {
+            console.log("play room");
             socket.emit("play");
         }
         pproom.text(text);
