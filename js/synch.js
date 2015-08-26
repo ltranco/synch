@@ -84,6 +84,7 @@ window.onload = function() {
         thisRoom.append("<li>" + cList[i] + "</li>");
         }
         thisRoom.append("</ul>");
+        $("#joining").hide();
     }
 }
 
