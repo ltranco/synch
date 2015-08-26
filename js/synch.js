@@ -1,7 +1,7 @@
 window.onload = function() {
 	var socket = io('https://synch-backend.herokuapp.com/');
     var seeking = false, toggling = false;
-    var thisRoom = $("#thisRoom"), idButton = $("#roomIDButton"), pproom = $("#playPauseRoom");
+    var thisRoom = $("#thisRoom"), idButton = $("#roomIDButton"), pproom = $("#playPauseRoom"), join = $("#join");
 
     $("#search").autocomplete({
         source: function(request, response){
@@ -21,7 +21,7 @@ window.onload = function() {
         }
     });    
 
-    $("#join").click(function() {
+    join.click(function() {
         socket.emit("joinRoom", {roomID: $("#roomID").val()});
     });
 
@@ -98,7 +98,7 @@ window.onload = function() {
       output = output["output"];
 
       if(output == "nonexistent") {
-        $("#nonexist").show().delay(1000).fadeOut();
+        nonexistent();
         return;
       }
       updateClientList(output["clientsList"]); 
@@ -110,6 +110,10 @@ window.onload = function() {
       updateClientList(output["clientsList"]); 
       updateRoomID(output["roomID"]);
     });
+
+    function nonexistent() {
+        join.attr("value", "Room not found!").css("color", "#ff3232").delay(1000).css("color", "black").attr("value", "Join this room");
+    }
 
     function updateRoomID(roomID) {
         idButton.show().prop('value', "Room ID: " + roomID);
