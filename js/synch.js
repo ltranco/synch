@@ -57,7 +57,6 @@ window.onload = function() {
     socket.on('currentTimeDone', function(data) {
         console.log("currentTimedone " + data["currentTime"]);
         player.seekTo(120);
-        player.
     });
 
     socket.on('joinRoomDone', function(output) {
