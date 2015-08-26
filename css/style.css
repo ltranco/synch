@@ -5,3 +5,38 @@
 #nonexist {
 	display: none;
 }
+
+.youtubeOynat { display: none; background: #ddd; padding: 10px }
+.youtube {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px;
+    overflow: hidden
+}
+.youtube img {
+    float: left;
+    margin-right: 15px
+}
+.youtube a {
+    text-decoration: none;
+    color: darkred
+}
+.youtube p {
+    padding-top: 10px
+}
+
+.arama {
+    padding: 10px
+}
+.arama h2 {
+    font-weight: normal;
+    padding-bottom: 10px
+}
+
+.hata {
+    margin: 10px;
+    background-color: darkred;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px
+}
