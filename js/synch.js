@@ -9,9 +9,10 @@ window.onload = function() {
 
     $("#search").autocomplete({
         source: function(request, response) {
-            $.getJSON(
+            $.ajax({
                 url: "http://suggestqueries.google.com/complete/search?callback=?",
-                data:{
+                dataType: "jsonp",
+                data: {
                   "hl":"en", // Language
                   "ds":"yt", // Restrict lookup to youtube
                   "q":request.term, // query term
@@ -20,8 +21,8 @@ window.onload = function() {
                 success: function(data) {
                     response(data);
                 }
-            );
-        },
+            });
+        }
     });
 
     $("#join").click(function() {
