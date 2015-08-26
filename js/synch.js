@@ -13,7 +13,7 @@ window.onload = function() {
     });
 
     pproom.click(function() {
-        var text = pproom.value() == "Pause entire room" ? "Play entire room" : "Pause entire room";
+        var text = pproom.attr("value") == "Pause entire room" ? "Play entire room" : "Pause entire room";
         console.log(text);
         if(text == "Pause entire room") {
             console.log("pause room");
