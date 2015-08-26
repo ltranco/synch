@@ -9,6 +9,14 @@ window.onload = function() {
 
     $("#search").autocomplete({
         source: function(request, response) {
+            var suggestCallBack = function (data) {
+                var suggestions = [];
+                $.each(data[1], function(key, val) {
+                    suggestions.push({"value":val[0]});
+                });
+                suggestions.length = 5; // prune suggestions list to only 5 items
+                response(suggestions);
+            };
             $.getJSON("http://suggestqueries.google.com/complete/search?callback=?",
                 {
                   "hl":"en", // Language
@@ -18,14 +26,7 @@ window.onload = function() {
                   "client":"youtube" // force youtube style response, i.e. jsonp
                 }
             );
-            suggestCallBack = function (data) {
-                var suggestions = [];
-                $.each(data[1], function(key, val) {
-                    suggestions.push({"value":val[0]});
-                });
-                suggestions.length = 5; // prune suggestions list to only 5 items
-                response(suggestions);
-            };
+            
         },
     });
 
