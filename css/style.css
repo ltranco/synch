@@ -29,16 +29,16 @@
 #thisRoom {
     list-style: none;
     float: left;
+    width: 20%;
     background-color: #33C3F0: 
 }
 
 #thisRoom li { 
     padding-left: 1em; 
     text-indent: -.7em;
-    color: white;
 }
 
 #thisRoom li:before {
-    content: "• ";
+    content: "&bull; ";
     color: orange;
 }
