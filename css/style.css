@@ -13,7 +13,7 @@
 }
 
 #init {
-	width: 100%;
+	width: 80%;
 	text-align: center;
 }
 
@@ -24,4 +24,21 @@
 #join, #new {
 	width: 180px;
 	color: black;
+}
+
+#thisRoom {
+    list-style: none;
+    float: left;
+    background-color: #33C3F0: 
+}
+
+#thisRoom li { 
+    padding-left: 1em; 
+    text-indent: -.7em;
+    color: white;
+}
+
+#thisRoom li:before {
+    content: "• ";
+    color: orange;
 }
