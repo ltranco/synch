@@ -12,7 +12,7 @@ window.onload = function() {
         socket.emit("newRoom");
     });
 
-    $("#pauseRoom").click(funciton() {
+    $("#pauseRoom").click(function() {
         socket.emit("pause");
     });
 
