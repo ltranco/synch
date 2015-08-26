@@ -121,9 +121,9 @@ window.onload = function() {
     }
 
     function updateClientList(cList) {
-        thisRoom.empty().append("<ul>");
+        thisRoom.empty();
         for(var i in cList) {
-        thisRoom.append("<li>" + cList[i] + "</li>");
+            thisRoom.append("<input type=\"button\" class=\"button-primary\" value=\"" + cList[i] + "\">");
         }
         thisRoom.append("</ul>");
         $("#joining").hide();
