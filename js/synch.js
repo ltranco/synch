@@ -64,6 +64,7 @@ window.onload = function() {
         $("#nonexist").show().delay(1000).fadeOut();
         return;
       }
+      console.log(output);
       updateClientList(output["clientsList"]); 
       updateRoomID(output["roomID"]);
     });
