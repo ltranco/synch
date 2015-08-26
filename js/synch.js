@@ -58,8 +58,8 @@ window.onload = function() {
 
     socket.on('joinRoomDone', function(output) {
       output = output["output"];
-
-      if(output["status"] == "nonexistent") {
+      console.log(output);
+      if(output == "nonexistent") {
         console.log("nonexistent room");
         return;
       }
