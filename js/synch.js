@@ -114,7 +114,7 @@ window.onload = function() {
     function nonexistent() {
         join.css("color", "#ff3232").attr("value", "Room not found!");
         join.delay(1000)
-        //join.css("color", "black").attr("value", "Join this room");
+        join.css("color", "black").attr("value", "Join this room");
     }
 
     function updateRoomID(roomID) {
