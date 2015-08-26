@@ -2,7 +2,7 @@ window.onload = function() {
 	var socket = io('https://synch-backend.herokuapp.com/');
     var seeking = false;
 
-    var thisRoom = $("#thisRoom"), idButton = $("#roomIDButton");
+    var thisRoom = $("#thisRoom"), idButton = $("#roomIDButton"), pproom = $("#playPauseRoom");
 
     $("#join").click(function() {
         socket.emit("joinRoom", {roomID: $("#roomID").val()});
@@ -12,8 +12,15 @@ window.onload = function() {
         socket.emit("newRoom");
     });
 
-    $("#pauseRoom").click(function() {
-        socket.emit("pause");
+    pproom.click(function() {
+        var text = pproom.text() == "Pause entire room" ? "Play entire room" : "Pause entire room";
+        if(text == "Pause entire room") {
+            socket.emit("pause");    
+        }
+        else {
+            socket.emit("play");
+        }
+        pproom.text(text);
     });
 
     var tag = document.createElement("script");
