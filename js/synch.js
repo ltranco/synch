@@ -12,9 +12,7 @@ window.onload = function() {
   var player;
       window.onYouTubeIframeAPIReady = function() {
         player = new YT.Player("player", {
-          "height": "315",
-          "width": "560",
-          "videoId": "L6cVcbkx8l8",
+          "videoId": "PUP7U5vTMM0",
           "events": {
             "onReady": onPlayerReady,
             "onStateChange": onPlayerStateChange
@@ -47,7 +45,7 @@ window.onload = function() {
 
 
 
-  
+
     
     $("#join").click(function() {
     	socket.emit("joinRoom", {roomID: $("#roomID").val()});
