@@ -9,14 +9,6 @@ window.onload = function() {
         socket.emit("newRoom", {name: "Long"});
     });
 
-    socket.on('joinRoomDone', function(output) {
-      console.log(output);
-    });
-
-    socket.on('newRoomDone', function(output) {
-      console.log(output);
-    });
-
     var tag = document.createElement("script");
     tag.src = "//www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName("script")[0];
@@ -34,14 +26,14 @@ window.onload = function() {
     }
 
     function onPlayerReady(event) {
-        event.target.playVideo();
+        //event.target.playVideo();
     }
 
     function onPlayerStateChange(event) {
         var time, rate, remainingTime;
         if (event.data == YT.PlayerState.PLAYING) {
             time = player.getCurrentTime();
-            player.seekTo(200);
+            player.seekTo(100);
             /*if (time + .4 < stopPlayAt) {
                 rate = player.getPlaybackRate();
                 remainingTime = (stopPlayAt - time) / rate;
@@ -53,6 +45,15 @@ window.onload = function() {
     function pauseVideo() {
         player.pauseVideo();
     }
+
+    socket.on('joinRoomDone', function(output) {
+      console.log(output);
+      player.playVideo();
+    });
+
+    socket.on('newRoomDone', function(output) {
+      console.log(output);
+    });
 }
 
 //http://jsfiddle.net/hnkK7/
