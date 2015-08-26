@@ -48,7 +48,7 @@ window.onload = function() {
 
     socket.on('joinRoomDone', function(output) {
       console.log(output);
-      player.playVideo();
+      player.seekTo(300);
     });
 
     socket.on('newRoomDone', function(output) {
