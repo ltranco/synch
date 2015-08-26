@@ -68,7 +68,7 @@ window.onload = function() {
         thisRoom.append("<li>" + cList[i] + "</li>");
       }
       thisRoom.append("</ul>");
-      idButton.text(roomID);
+      idButton.prop('value', roomID);
     });
 }
 
