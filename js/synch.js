@@ -38,33 +38,6 @@ $('button#submit').click(function(){
         $.youtubeAPI(value);
 });
 
-/* Youtube Arama Fonksiyonu */
-$.youtubeAPI = function(kelime){
-    var sonuc = $('#sonuc');
-    sonuc.html('Arama gerçekleştiriliyor...');
-    $.ajax({
-        type: 'GET',
-        url: 'http://gdata.youtube.com/feeds/api/videos?q=' + kelime + '&max-results=15&v=2&alt=jsonc',
-        dataType: 'jsonp',
-        success: function( veri ){
-            if( veri.data.items ){
-                sonuc.empty();
-                $.each( veri.data.items, function(i, data) {
-                    sonuc.append('<div class="youtube">\
-                        <img src="' + data.thumbnail.sqDefault + '" alt="" />\
-                        <h3><a href="javascript:void(0)" onclick="$.youtubePlay(\'' + data.id + '\', \'' + data.content[5] + '\')">' + data.title + '</a></h3>\
-                        <p>' + data.description + '</p>\
-                    </div>\
-                    <div class="youtubeOynat" id="' + data.id + '"></div>');
-                });
-            }
-            else {
-                sonuc.html('<div class="hata"><strong>' + kelime + '</strong> ile ilgili hiç video bulunamadı!</div>');
-            }
-        }
-    });
-}
-
 /* Youtube Video Oynatma Fonksiyonu */
 $.youtubePlay = function(yid, frame){
     $('.youtubeOynat').slideUp().empty();
