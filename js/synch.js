@@ -58,9 +58,10 @@ window.onload = function() {
 
     socket.on('joinRoomDone', function(output) {
       output = output["output"];
-      console.log(output);
+
       if(output == "nonexistent") {
         console.log("nonexistent room");
+        $("#nonexistent").show().delay(300).hide();
         return;
       }
       updateClientList(output["clientsList"]); 
