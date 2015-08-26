@@ -1,6 +1,6 @@
 window.onload = function() {
 	var socket = io('https://synch-backend.herokuapp.com/');
-    var seeking = false, pausing = false;
+    var seeking = false;
 
     var thisRoom = $("#thisRoom"), idButton = $("#roomIDButton");
 
@@ -10,6 +10,10 @@ window.onload = function() {
 
     $("#new").click(function() {
         socket.emit("newRoom");
+    });
+
+    $("#pauseRoom").click(funciton() {
+        socket.emit("pause");
     });
 
     var tag = document.createElement("script");
@@ -41,14 +45,6 @@ window.onload = function() {
             }
             seeking = false;
         }
-        else if(event.data == YT.PlayerState.PAUSED) {
-
-            if(!pausing) {
-                console.log("pausing state detected");
-                socket.emit("pause");
-            }
-            pausing = false;
-        }
     }
 
     socket.on('currentTimeDone', function(data) {
@@ -58,7 +54,6 @@ window.onload = function() {
 
     socket.on('pauseDone', function() {
         player.pauseVideo();
-        pausing = true;
         console.log("PAUSEEE!!!!");
     });
 
