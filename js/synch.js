@@ -2,6 +2,8 @@ window.onload = function() {
 	var socket = io('https://synch-backend.herokuapp.com/');
     var seeking = false;
 
+    var thisRoom = $("#thisRoom"), idButton = $("#roomIDButton");
+
     $("#join").click(function() {
         socket.emit("joinRoom", {roomID: $("#roomID").val()});
     });
@@ -55,21 +57,33 @@ window.onload = function() {
     });
 
     socket.on('joinRoomDone', function(output) {
-      
+      output = output["output"];
+
+      if(output["status"] == "nonexistent") {
+        console.log("nonexistent room");
+        return;
+      }
+      updateClientList(output["clientsList"]); 
+      updateRoomID(output["roomID"]);
     });
 
     socket.on('newRoomDone', function(output) {
       output = output["output"];
-      var cList = output["clientsList"], roomID = output["roomID"];
-      var thisRoom = $("#thisRoom"), idButton = $("#roomIDButton");
-
-      thisRoom.empty().append("<ul>");
-      for(var i in cList) {
-        thisRoom.append("<li>" + cList[i] + "</li>");
-      }
-      thisRoom.append("</ul>");
-      idButton.show().prop('value', roomID);
+      updateClientList(output["clientsList"]); 
+      updateRoomID(output["roomID"]);
     });
+
+    function updateRoomID(roomID) {
+        idButton.show().prop('value', roomID);
+    }
+
+    function updateClientList(cList) {
+        thisRoom.empty().append("<ul>");
+        for(var i in cList) {
+        thisRoom.append("<li>" + cList[i] + "</li>");
+        }
+        thisRoom.append("</ul>");
+    }
 }
 
 //http://jsfiddle.net/hnkK7/
