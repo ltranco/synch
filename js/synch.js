@@ -28,21 +28,16 @@ $("#youtube").autocomplete({
     },
     /* seçilene işlem yapmak için burayı kullanabilirsin */
     select: function( event, ui ) {
-        $.youtubeAPI(ui.item.label);
+        console.log(ui.item.label);
     }
 });
 
-/* Butona Basınca Arama */
-$('button#submit').click(function(){
-    var value = $('input#youtube').val();
-        $.youtubeAPI(value);
-});
-
-/* Youtube Video Oynatma Fonksiyonu */
-$.youtubePlay = function(yid, frame){
-    $('.youtubeOynat').slideUp().empty();
-    $('#'+yid).slideDown().html('<iframe src="'+ frame +'&autoplay=1" style="width: 100%; box-sizing: border-box; height: 300px" />');
-}
+    /* Butona Basınca Arama */
+    $('button#submit').click(function(){
+        var value = $('input#youtube').val();
+            console.log(value);
+    });
+    
 
     $("#join").click(function() {
         socket.emit("joinRoom", {roomID: $("#roomID").val()});
