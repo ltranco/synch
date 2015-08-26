@@ -9,12 +9,16 @@ window.onload = function() {
 
     $("#search").autocomplete({
         source: function(request, response) {
-            $.getJSON("http://suggestqueries.google.com/complete/search?callback=?",
-                {
+            $.getJSON(
+                url: "http://suggestqueries.google.com/complete/search?callback=?",
+                data:{
                   "hl":"en", // Language
                   "ds":"yt", // Restrict lookup to youtube
                   "q":request.term, // query term
                   "client":"youtube" // force youtube style response, i.e. jsonp
+                },
+                success: function(data) {
+                    response(data);
                 }
             );
         },
