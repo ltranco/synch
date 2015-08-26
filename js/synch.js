@@ -37,10 +37,10 @@ window.onload = function() {
         
         
         if (event.data == YT.PlayerState.PLAYING) {
-            if(sendTime) {
-                socket.emit("currentTime", {currentTime: time});
-                sendTime = false;
-            }
+            //if(sendTime) {
+                //socket.emit("currentTime", {currentTime: time});
+                //sendTime = false;
+            //}
             console.log("current time is " + time);    
             /*if (time + .4 < stopPlayAt) {
                 rate = player.getPlaybackRate();
