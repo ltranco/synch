@@ -59,6 +59,7 @@ window.onload = function() {
     });
 
     socket.on('newRoomDone', function(output) {
+        console.log(output);
       var cList = output["clientsList"], roomID = output["roomID"];
       var thisRoom = $("#thisRoom"), idButton = $("#roomID");
 
