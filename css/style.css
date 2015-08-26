@@ -5,3 +5,13 @@
 #nonexist {
 	display: none;
 }
+
+ul.ui-autocomplete.ui-menu{width:400px}
+
+/* 
+    targets the first result's <a> element, 
+    remove the a at the end to target the li itself 
+*/
+ul.ui-autocomplete.ui-menu li:first-child a{
+    color:blue;
+}

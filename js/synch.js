@@ -4,40 +4,24 @@ window.onload = function() {
 
     var thisRoom = $("#thisRoom"), idButton = $("#roomIDButton"), pproom = $("#playPauseRoom");
 
-
-    /* AutoComplete */
-$("#youtube").autocomplete({
-    source: function(request, response){
-        /* google geliştirici kimliği (zorunlu değil) */
-        var apiKey = 'AI39si7ZLU83bKtKd4MrdzqcjTVI3DK9FvwJR6a4kB_SW_Dbuskit-mEYqskkSsFLxN5DiG1OBzdHzYfW0zXWjxirQKyxJfdkg';
-        /* aranacak kelime */
-        var query = request.term;
-        /* youtube sorgusu */
-        $.ajax({
-            url: "http://suggestqueries.google.com/complete/search?hl=en&ds=yt&client=youtube&hjson=t&cp=1&q="+query+"&key="+apiKey+"&format=5&alt=json&callback=?",  
-            dataType: 'jsonp',
-            success: function(data, textStatus, request) { 
-               console.log(data);
-               response( $.map( data[1], function(item) {
-                    return {
-                        label: item[0],
-                        value: item[0]
-                    }
-                }));
-            }
-        });
-    },
-    /* seçilene işlem yapmak için burayı kullanabilirsin */
-    select: function( event, ui ) {
-        console.log(ui.item.label + " " + ui.item.value);
-    }
-});
-
-    /* Butona Basınca Arama */
-    $('button#submit').click(function(){
-        var value = $('input#youtube').val();
-            console.log(value);
+    $("#search").autocomplete({
+        source: function(request, response){
+            var apiKey = 'AI39si7ZLU83bKtKd4MrdzqcjTVI3DK9FvwJR6a4kB_SW_Dbuskit-mEYqskkSsFLxN5DiG1OBzdHzYfW0zXWjxirQKyxJfdkg';
+            $.ajax({
+                url: "http://suggestqueries.google.com/complete/search?hl=en&ds=yt&client=youtube&hjson=t&cp=1&q="+request.term+"&key="+apiKey+"&format=5&alt=json&callback=?",  
+                dataType: 'jsonp',
+                success: function(data, textStatus, request) { 
+                   response( $.map(data[1], function(item) {
+                        return {label: item[0],}
+                    }));
+                }
+            });
+        },
+        select: function( event, ui ) {
+            console.log(ui.item.label);
+        }
     });
+
     
 
     $("#join").click(function() {
