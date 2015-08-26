@@ -20,3 +20,8 @@
 #roomIDButton:hover {
 	cursor: default;
 }
+
+#join, #new {
+	width: 180px;
+	color: black;
+}
