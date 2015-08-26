@@ -13,7 +13,7 @@ window.onload = function() {
     });
 
     pproom.click(function() {
-        var text = togglePPRoom();
+        var text = pproom.attr("value");
         if(text == "Pause entire room") {
             socket.emit("pause");    
         }
