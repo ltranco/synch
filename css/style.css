@@ -31,6 +31,14 @@
     background-color: #33C3F0: 
 }
 
+#thisRoom input:hover {
+	cursor: default;
+}
+#thisRoom input {
+	margin: 0 5px 0 0;
+	background-color: #ff8f00;
+}
+
 #thisRoom li { 
     padding-left: 1em; 
     text-indent: -.7em;
