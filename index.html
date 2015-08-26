@@ -1,0 +1,31 @@
+<style>
+  .inactive { display: none; }
+  .active { display: block; }
+</style>
+<script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+
+
+<script>
+window.onload = function() {
+    var socket = io('https://immense-spire-7750.herokuapp.com/');
+    socket.emit("newRoom", {name: "Long"});
+    socket.emit("joinRoom", {name: "Long"});
+    socket.on('output', function(output) {
+      console.log(output);
+    });
+}
+
+</script>
+
+
+
+<div id="registration" class="active">
+  <p>Username: <input id="name" /> <button id="join">Join Room</button></p>
+</div>
+
+<div id="room" class="inactive">
+  User: <span id="username"></span>
+  <button id="leave">Leave Room</button>
+  <p>Users: <span id="userCount"></span></p>
+  <p>Controller: <span id="controller">---</span> <button id="takeControl">Take Control</button></p>
+</div>
