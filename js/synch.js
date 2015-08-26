@@ -37,8 +37,8 @@ window.onload = function() {
         
         
         if (event.data == YT.PlayerState.PLAYING) {
-            //if(sendTime) {
-                //socket.emit("currentTime", {currentTime: time});
+            
+            socket.emit("currentTime", {currentTime: time});
                 //sendTime = false;
             //}
             console.log("current time is " + time);    
