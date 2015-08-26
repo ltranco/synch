@@ -112,7 +112,9 @@ window.onload = function() {
     });
 
     function nonexistent() {
-        join.attr("value", "Room not found!").css("color", "#ff3232").delay(1000).css("color", "black").attr("value", "Join this room");
+        join.css("color", "#ff3232").attr("value", "Room not found!");
+        join.delay(1000)
+        //join.css("color", "black").attr("value", "Join this room");
     }
 
     function updateRoomID(roomID) {
