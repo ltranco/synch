@@ -1,6 +1,6 @@
 window.onload = function() {
 	var socket = io('https://synch-backend.herokuapp.com/');
-    var seeking = false;
+    var seeking = false, pausing = false;
 
     var thisRoom = $("#thisRoom"), idButton = $("#roomIDButton");
 
@@ -35,25 +35,29 @@ window.onload = function() {
     function onPlayerStateChange(event) {
         var time, rate, remainingTime;
         time = player.getCurrentTime();
-
-        
-        
-        if (event.data == YT.PlayerState.PLAYING) {
-            
+        if(event.data == YT.PlayerState.PLAYING) {
             if(!seeking) {
                 socket.emit("currentTime", {currentTime: time});    
             }
             seeking = false;
         }
-    }
-    
-    function pauseVideo() {
-        player.pauseVideo();
+        else if(event.data == YT.PlayerState.PAUSED) {
+            if(!pausing) {
+                socket.emit("pause");
+            }
+            pausing = false;
+        }
     }
 
     socket.on('currentTimeDone', function(data) {
         player.seekTo(parseInt(data["currentTime"]));
         seeking = true;
+    });
+
+    socket.on('pauseDone', function() {
+        player.pauseVideo();
+        pausing = true;
+        console.log("PAUSEEE!!!!");
     });
 
     socket.on('joinRoomDone', function(output) {
