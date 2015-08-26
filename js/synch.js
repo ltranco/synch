@@ -61,7 +61,7 @@ window.onload = function() {
     socket.on('newRoomDone', function(output) {
       output = output["output"];
       var cList = output["clientsList"], roomID = output["roomID"];
-      var thisRoom = $("#thisRoom"), idButton = $("#roomID");
+      var thisRoom = $("#thisRoom"), idButton = $("#roomIDButton");
 
       thisRoom.empty().append("<ul>");
       for(var i in cList) {
