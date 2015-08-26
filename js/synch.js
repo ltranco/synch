@@ -17,6 +17,7 @@ $("#youtube").autocomplete({
             url: "http://suggestqueries.google.com/complete/search?hl=en&ds=yt&client=youtube&hjson=t&cp=1&q="+query+"&key="+apiKey+"&format=5&alt=json&callback=?",  
             dataType: 'jsonp',
             success: function(data, textStatus, request) { 
+               console.log(data);
                response( $.map( data[1], function(item) {
                     return {
                         label: item[0],
@@ -28,7 +29,7 @@ $("#youtube").autocomplete({
     },
     /* seçilene işlem yapmak için burayı kullanabilirsin */
     select: function( event, ui ) {
-        console.log(ui.item.label);
+        console.log(ui.item.label + " " + ui.item.value);
     }
 });
 
