@@ -13,18 +13,20 @@ window.onload = function() {
     });
 
     pproom.click(function() {
-        var text = pproom.attr("value") == "Pause entire room" ? "Play entire room" : "Pause entire room";
-        console.log(text);
+        var text = togglePPRoom();
         if(text == "Pause entire room") {
-            console.log("pause room");
             socket.emit("pause");    
         }
         else {
-            console.log("play room");
             socket.emit("play");
         }
-        pproom.prop('value', text);
     });
+
+    function togglePPRoom() {
+        var text = pproom.attr("value") == "Pause entire room" ? "Play entire room" : "Pause entire room";
+        pproom.prop('value', text);
+        return text;
+    }
 
     var tag = document.createElement("script");
     tag.src = "//www.youtube.com/iframe_api";
@@ -62,13 +64,15 @@ window.onload = function() {
         seeking = true;
     });
 
-    socket.on('pauseDone', function() {
+    socket.on('pauseDone', function(data) {
         player.pauseVideo();
+        pproom.attr('value', data["output"]);
         console.log("PAUSEEE!!!!");
     });
 
-    socket.on('pauseDone', function() {
+    socket.on('playDone', function(data) {
         player.playVideo();
+        pproom.attr('value', data["output"]);
         console.log("PLAYYY!!!!");
     });
 
