@@ -113,11 +113,7 @@ window.onload = function() {
 
     function nonexistent() {
         join.css("color", "#ff3232").attr("value", "Room not found!");
-        join.delay(1000).queue(function(next) {
-            $(this).css("color", "black");
-            next();
-        })
-        join.attr("value", "Join this room");
+        setTimeout(function() {join.css("color", "black").attr("value", "Join this room");}, 1000);
     }
 
     function updateRoomID(roomID) {
