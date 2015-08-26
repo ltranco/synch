@@ -1,7 +1,6 @@
 window.onload = function() {
 	var socket = io('https://synch-backend.herokuapp.com/');
     var seeking = false, toggling = false;
-
     var thisRoom = $("#thisRoom"), idButton = $("#roomIDButton"), pproom = $("#playPauseRoom");
 
     $("#search").autocomplete({
@@ -20,9 +19,7 @@ window.onload = function() {
         select: function( event, ui ) {
             console.log(ui.item.label);
         }
-    });
-
-    
+    });    
 
     $("#join").click(function() {
         socket.emit("joinRoom", {roomID: $("#roomID").val()});
