@@ -59,7 +59,15 @@ window.onload = function() {
     });
 
     socket.on('newRoomDone', function(output) {
-      console.log(output);
+      var cList = output["clientsList"], roomID = output["roomID"];
+      var thisRoom = $("#thisRoom"), idButton = $("#roomID");
+
+      thisRoom.empty().append("<ul>");
+      for(var i in cList) {
+        thisRoom.append("<li>" + cList[i] + "</li>");
+      }
+      thisRoom.append("</ul>");
+      idButton.val(roomID);
     });
 }
 
