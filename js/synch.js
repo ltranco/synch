@@ -7,7 +7,7 @@ window.onload = function() {
     });
 
     $("#new").click(function() {
-        socket.emit("newRoom", {name: "Long"});
+        socket.emit("newRoom");
     });
 
     var tag = document.createElement("script");
@@ -41,16 +41,7 @@ window.onload = function() {
             if(!seeking) {
                 socket.emit("currentTime", {currentTime: time});    
             }
-            
-                //sendTime = false;
-            //}
-            console.log("current time is " + time);
-            seeking = false;    
-            /*if (time + .4 < stopPlayAt) {
-                rate = player.getPlaybackRate();
-                remainingTime = (stopPlayAt - time) / rate;
-                stopPlayTimer = setTimeout(pauseVideo, remainingTime * 1000);
-            }*/
+            seeking = false;
         }
     }
     
@@ -59,14 +50,12 @@ window.onload = function() {
     }
 
     socket.on('currentTimeDone', function(data) {
-        console.log("setting current time done");
         player.seekTo(parseInt(data["currentTime"]));
         seeking = true;
     });
 
     socket.on('joinRoomDone', function(output) {
-      player.seekTo(120);
-      console.log(output);
+      
     });
 
     socket.on('newRoomDone', function(output) {
