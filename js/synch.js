@@ -67,24 +67,20 @@ window.onload = function() {
     socket.on('pauseDone', function(data) {
         player.pauseVideo();
         pproom.attr('value', data["output"]);
-        console.log("PAUSEEE!!!!");
     });
 
     socket.on('playDone', function(data) {
         player.playVideo();
         pproom.attr('value', data["output"]);
-        console.log("PLAYYY!!!!");
     });
 
     socket.on('joinRoomDone', function(output) {
       output = output["output"];
 
       if(output == "nonexistent") {
-        console.log("nonexistent room");
         $("#nonexist").show().delay(1000).fadeOut();
         return;
       }
-      console.log(output);
       updateClientList(output["clientsList"]); 
       updateRoomID(output["roomID"]);
     });
