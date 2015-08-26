@@ -31,9 +31,11 @@ window.onload = function() {
 
     function onPlayerStateChange(event) {
         var time, rate, remainingTime;
+        time = player.getCurrentTime();
+
+        socket.emit("currentTime", {currentTime: time});
         if (event.data == YT.PlayerState.PLAYING) {
-            time = player.getCurrentTime();
-            player.seekTo(100);
+            
             /*if (time + .4 < stopPlayAt) {
                 rate = player.getPlaybackRate();
                 remainingTime = (stopPlayAt - time) / rate;
@@ -46,9 +48,14 @@ window.onload = function() {
         player.pauseVideo();
     }
 
+    socket.on('currentTimeDone', function(data) {
+        console.log(data["currentTime"]);
+        player.seekTo(parseInt(data["currentTime"]));
+    });
+
     socket.on('joinRoomDone', function(output) {
-      console.log(output);
       player.seekTo(120);
+      console.log(output);
     });
 
     socket.on('newRoomDone', function(output) {
