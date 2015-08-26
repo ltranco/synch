@@ -125,7 +125,7 @@ window.onload = function() {
         for(var i in cList) {
             thisRoom.append("<input type=\"button\" class=\"button-primary\" value=\"" + cList[i] + "\">");
         }
-        thisRoom.append("</ul>");
+        thisRoom.append("<br>");
         $("#joining").hide();
     }
 }
