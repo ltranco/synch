@@ -42,6 +42,7 @@ window.onload = function() {
             seeking = false;
         }
         else if(event.data == YT.PlayerState.PAUSED) {
+            console.log("pausing state detected");
             if(!pausing) {
                 socket.emit("pause");
             }
