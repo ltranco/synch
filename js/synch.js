@@ -23,7 +23,7 @@ window.onload = function() {
             console.log("play room");
             socket.emit("play");
         }
-        pproom.text(text);
+        pproom.prop('value', text);
     });
 
     var tag = document.createElement("script");
@@ -65,6 +65,11 @@ window.onload = function() {
     socket.on('pauseDone', function() {
         player.pauseVideo();
         console.log("PAUSEEE!!!!");
+    });
+
+    socket.on('pauseDone', function() {
+        player.playVideo();
+        console.log("PLAYYY!!!!");
     });
 
     socket.on('joinRoomDone', function(output) {
