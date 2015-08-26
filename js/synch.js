@@ -31,7 +31,6 @@ window.onload = function() {
             "onStateChange": onPlayerStateChange
           }
         });
-        player.seekTo(120, true);
     }
 
     function onPlayerReady(event) {
