@@ -42,7 +42,7 @@ window.onload = function() {
         var time, rate, remainingTime;
         if (event.data == YT.PlayerState.PLAYING) {
             time = player.getCurrentTime();
-      
+            player.seekTo(200);
             /*if (time + .4 < stopPlayAt) {
                 rate = player.getPlaybackRate();
                 remainingTime = (stopPlayAt - time) / rate;
