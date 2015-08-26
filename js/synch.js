@@ -40,7 +40,6 @@ window.onload = function() {
 
     function onPlayerStateChange(event) {
         var time, rate, remainingTime;
-        clearTimeout(stopPlayTimer);
         if (event.data == YT.PlayerState.PLAYING) {
             time = player.getCurrentTime();
       
