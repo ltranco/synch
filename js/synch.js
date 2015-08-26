@@ -59,6 +59,7 @@ window.onload = function() {
     }
 
     socket.on('currentTimeDone', function(data) {
+        console.log("setting current time done");
         player.seekTo(parseInt(data["currentTime"]));
         seeking = true;
     });
