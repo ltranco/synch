@@ -13,7 +13,7 @@
 }
 
 #init {
-	width: 100%;
+	width: 80%;
 	text-align: center;
 }
 
@@ -26,13 +26,9 @@
 	color: black;
 }
 
-#control {
-	width: 80%;
-}
 #thisRoom {
     list-style: none;
     float: left;
-    width: 20%;
     background-color: #33C3F0: 
 }
 
@@ -42,6 +38,6 @@
 }
 
 #thisRoom li:before {
-    content: "&bull; ";
-    color: orange;
+    content: "• ";
+    color: white;
 }
