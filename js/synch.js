@@ -1,6 +1,7 @@
 window.onload = function() {
 	var socket = io('https://synch-backend.herokuapp.com/');
-    
+    var sendTime = true;
+
     $("#join").click(function() {
         socket.emit("joinRoom", {roomID: $("#roomID").val()});
     });
@@ -33,10 +34,14 @@ window.onload = function() {
         var time, rate, remainingTime;
         time = player.getCurrentTime();
 
-        //socket.emit("currentTime", {currentTime: time});
-        console.log("change")
+        
+        
         if (event.data == YT.PlayerState.PLAYING) {
-            
+            if(sendTime) {
+                socket.emit("currentTime", {currentTime: time});
+                sendTime = false;
+            }
+            console.log("current time is " + time);    
             /*if (time + .4 < stopPlayAt) {
                 rate = player.getPlaybackRate();
                 remainingTime = (stopPlayAt - time) / rate;
