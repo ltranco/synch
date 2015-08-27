@@ -39,7 +39,7 @@ window.onload = function() {
                     var thumb = obj["snippet"]["thumbnails"]["default"]["url"];
                     var title = obj["snippet"]["title"];
                     console.log(title + "\n" + thumb + " " + desc + " " + vid);
-                    sr.append("<div class='sr'><img id='" + vid + "'class='thumb' src='" + thumb + "'><span><b>" + title + "</b></span><br><span>" + desc + "</span></div>");
+                    sr.append("<div class='sr'><img id='" + vid + "'class='thumb' src='" + thumb + "'><span><b>" + title + "</b></span><br><span><p>" + desc + "</p></span></div>");
                 }
                 console.log("\n");
             }
