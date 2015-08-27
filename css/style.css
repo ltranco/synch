@@ -65,8 +65,15 @@ body {
 	float: left;
 }
 
+.thumb:hover{
+	cursor: pointer;
+}
 .sr {
 	height: 110px;
+}
+
+.sr span {
+	display: block;
 }
 
 .sr b, .sr p {
