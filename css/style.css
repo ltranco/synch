@@ -2,7 +2,7 @@ body {
 	background-image: url("background.jpg");
 }
 
-#roomIDButton, #searchArea {
+#roomIDButton, #searchArea, #vid {
 	display: none;
 }
 
