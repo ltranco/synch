@@ -66,19 +66,7 @@ table {
 .thumb:hover{
 	cursor: pointer;
 }
-.sr {
-	height: 110px;
-}
 
-.sr span {
-	display: inline-block;
-	float: left;
-}
-
-.sr b, .sr p {
-	margin: 0 0 0 20px;
-}
-
-.sr b {
-	font-size: 20px;
+#searchResult p {
+	margin: 1px;
 }
