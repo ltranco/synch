@@ -2,6 +2,9 @@ body {
 	background-image: url("background.jpg");
 }
 
+table {
+	width: inherit;
+}
 #roomIDButton, #searchArea, #vid {
 	display: none;
 }
