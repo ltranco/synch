@@ -179,7 +179,7 @@ window.onload = function() {
     }
 
     function updateRoomID(roomID) {
-        idButton.show().prop('value', "Room ID: " + roomID);
+        idButton.show().text("Room ID: " + roomID);
         $("#searchArea").show(300);
     }
 

@@ -15,8 +15,8 @@ body {
 #init {
 	text-align: center;
 	color: black;
-	padding: 15px;
 	background-color: white;
+	padding: 15px 10px 0px 10px
 }
 
 #roomIDButton {
