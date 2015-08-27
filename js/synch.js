@@ -14,6 +14,7 @@ window.onload = function() {
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
     function onYouTubeIframeAPIReady() {
+        console.log("frame ready");
         player = new YT.Player("player", {
           "videoId": "IvN5h9BE444",
           "events": {
