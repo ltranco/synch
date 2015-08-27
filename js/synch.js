@@ -174,8 +174,8 @@ window.onload = function() {
     });
 
     function nonexistent() {
-        join.css("background-color", "#ff3232 !important").text("Room not found!");
-        setTimeout(function() {join.css("background-color", "#1565C0 !important").text("Join this room");}, 1000);
+        join.text("Room not found!");
+        setTimeout(function() {join.text("Join this room");}, 1000);
     }
 
     function updateRoomID(roomID) {
