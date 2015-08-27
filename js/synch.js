@@ -91,7 +91,12 @@ window.onload = function() {
 
     socket.on("videoSelectedDone", function(data) {
         createNewPlayer(data["vid"]);
+        setInterval(reportCurrentTime(), 1000);
     });
+
+    function reportCurrentTime() {
+        socket.emit("reportCurrentTime", {currentTimeReport: player.getCurrentTime()});
+    }
 
     function createNewPlayer(vid, s) {
         if(!s) {
