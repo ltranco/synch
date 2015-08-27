@@ -45,6 +45,7 @@ body {
 }
 
 #init, #searchResult {
+	margin: 30px 40px 40px 40px;
 }
 
 #searchResult {
