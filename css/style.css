@@ -18,7 +18,7 @@ body {
 }
 
 #init {
-	width: 100%;
+	width: 80%;
 	text-align: center;
 	color: white;
 }
@@ -55,11 +55,12 @@ body {
 }
 
 #init, #searchResult {
+	margin: 10px 40px 40px 40px;
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.18), 0 2px 10px 0 rgba(0,0,0,0.18);
 }
 
 #searchResult {
-	margin: 0 40px 10px 40px;
+	
 	text-align: center;
 	background-color: white;
 	padding: 30px 30px 30px 30px;
@@ -67,4 +68,20 @@ body {
 
 #searchResult img {
 	float: left;
+}
+
+.sr {
+	height: 110px;
+}
+
+.sr b, .sr p {
+	float: left;
+}
+
+.sr b {
+	margin: 0 0 0 20px;
+}
+
+.sr p {
+	margin: -25px 5px 0 20px;
 }
