@@ -6,12 +6,6 @@ body {
 	display: none;
 }
 
-#nonexist {
-	background-color: #ff3232;
-	border: 1px solid #ff3232;
-	display: none;
-}
-
 #search {
 	width: 400px;
 	margin-bottom: 30px;
