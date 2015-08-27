@@ -159,9 +159,13 @@ window.onload = function() {
         return;
       }
 
-      createNewPlayer(output["url"]);
       updateClientList(output["clientsList"]); 
       updateRoomID(output["roomID"]);
+    });
+
+    socket.on('joinRoomDoneLoadVideo', function(output) {
+        console.log("I'm a newcomer. Load my video!");
+        createNewPlayer(output["url"]);
     });
 
     socket.on('newRoomDone', function(output) {
