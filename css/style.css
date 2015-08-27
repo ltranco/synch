@@ -20,8 +20,12 @@ body {
 #init {
 	width: 100%;
 	text-align: center;
+	color: white;
 }
 
+#roomIDButton {
+	font-size: 20px;
+}
 #roomIDButton:hover {
 	cursor: default;
 }
