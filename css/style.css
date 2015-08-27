@@ -1,3 +1,7 @@
+body {
+	background-image: url("background.jpg");
+}
+
 #roomIDButton {
 	display: none;
 }
@@ -39,12 +43,7 @@
 	border: 0px solid white;
 }
 
-#thisRoom li { 
-    padding-left: 1em; 
-    text-indent: -.7em;
-}
-
-#thisRoom li:before {
-    content: "• ";
-    color: white;
+#vid {
+	width: 100%;
+	text-align: center;
 }
