@@ -35,7 +35,7 @@ window.onload = function() {
                     var desc = obj["snippet"]["description"];
                     //var thumb = obj["thumbnails"]["default"]["url"];
                     var title = obj["title"];
-                    console.log(title + "\n" + thumb + " " + desc + " " + vid);
+                    console.log(title + "\n"  + " " + desc + " " + vid);
                 }
                 console.log("\n");
             }
