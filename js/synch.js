@@ -30,6 +30,7 @@ window.onload = function() {
     });
 
     pproom.click(function() {
+        console.log("pproom clicked");
         var text = pproom.attr("value");
         if(text == "Pause entire room") {
             socket.emit("pause");    
