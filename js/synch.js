@@ -92,7 +92,6 @@ window.onload = function() {
     socket.on("videoSelectedDone", function(data) {
         console.log("video selected done");
         createNewPlayer(data["vid"]);
-        setInterval(reportCurrentTime(), 1000);
     });
 
     function reportCurrentTime() {
@@ -116,6 +115,8 @@ window.onload = function() {
           }
         });
         videoDiv.show();
+        clearInterval();
+        setInterval(reportCurrentTime(), 1000);
     }
 
     pproom.click(function() {
