@@ -2,10 +2,10 @@ body {
 	background-image: url("background.jpg");
 }
 
-.ui-state-focus {
-    color:White;
-    background:#96B202;
-    outline:none;
+.ui-menu .ui-menu-item a.ui-corner-all:hover, .ui-menu .ui-menu-item a.ui-corner-all:focus, .ui-menu .ui-menu-item a.ui-corner-all:active {
+    background:#ff3232!important;
+    color:#000;
+    border-radius:0;
 }
 
 #roomIDButton, #searchArea, #vid {
