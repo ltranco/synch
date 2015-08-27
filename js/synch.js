@@ -116,8 +116,6 @@ window.onload = function() {
           }
         });
         videoDiv.show();
-        clearInterval();
-        myInterval = setInterval(reportCurrentTime(), 1000);
     }
 
     pproom.click(function() {
@@ -139,7 +137,7 @@ window.onload = function() {
     function onPlayerReady(event) {
         //event.target.playVideo();
         clearInterval();
-        setInterval(reportCurrentTime(player.getCurrentTime()), 1000);
+        myInterval = setInterval(reportCurrentTime(), 1000);
     }
 
     socket.on('currentTimeDone', function(data) {
