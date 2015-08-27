@@ -6,7 +6,6 @@ window.onload = function() {
     var ytQuery = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&type=video&key=" + myAPIKey;
 
     var player;
-
     window.onYouTubeIframeAPIReady = function() {
         player = new YT.Player("player", {
           "videoId": id,
@@ -16,7 +15,6 @@ window.onload = function() {
           }
         });
     }
-
     $("#search").autocomplete({
         source: function(request, response){
             var apiKey = 'AI39si7ZLU83bKtKd4MrdzqcjTVI3DK9FvwJR6a4kB_SW_Dbuskit-mEYqskkSsFLxN5DiG1OBzdHzYfW0zXWjxirQKyxJfdkg';
@@ -56,6 +54,17 @@ window.onload = function() {
                     $("#player").empty();
                     var id = $(this).find('.thumb').attr("id");
                     console.log(id);
+
+                    
+                        player = new YT.Player("player", {
+                          "videoId": id,
+                          "events": {
+                            "onReady": onPlayerReady,
+                            "onStateChange": onPlayerStateChange
+                          }
+                        });
+
+
                     player.loadVideoById(id);
                 });
             }
