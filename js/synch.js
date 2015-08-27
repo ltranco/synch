@@ -150,7 +150,6 @@ window.onload = function() {
 
     socket.on('joinRoomDone', function(output) {    
         var isDisconnecting = output["disconnect"];
-        console.log("isDisconnecting " + isDisconnecting);
         output = output["output"];
 
         if(output == "nonexistent") {
@@ -159,8 +158,8 @@ window.onload = function() {
         }
 
         if(!isDisconnecting) {
-            console.log("someone just left")
-            createNewPlayer(output["url"], output["time"]);  
+            console.log("time " + output["time"])
+            createNewPlayer(output["url"], parseFloat(output["time"]));  
         }
 
         updateClientList(output["clientsList"]); 
