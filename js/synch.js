@@ -93,8 +93,10 @@ window.onload = function() {
                     console.log(id);
 
                     videoID = id;
-                        player = null;
-                        $("#player").empty();
+
+                    if(player) {
+                        player.destroy();
+                    }
                         player = new YT.Player("player", {
                           "videoId": id,
                           "events": {
