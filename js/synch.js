@@ -5,6 +5,13 @@ window.onload = function() {
     var myAPIKey = "AIzaSyAO9KlVoJU7WMqGsFuL5HiJgRg19hCrkCw";
     var ytQuery = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&type=video&key=" + myAPIKey;
 
+    var tag = document.createElement("script");
+    tag.src = "//www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName("script")[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+
     $("#search").autocomplete({
         source: function(request, response){
             var apiKey = 'AI39si7ZLU83bKtKd4MrdzqcjTVI3DK9FvwJR6a4kB_SW_Dbuskit-mEYqskkSsFLxN5DiG1OBzdHzYfW0zXWjxirQKyxJfdkg';
@@ -30,21 +37,32 @@ window.onload = function() {
             success: function(data) { 
                 var items = data["items"];
                 var sr = $("#searchResult").show().empty();
-
                 for(var i in items) {
-                    console.log(items[i]);
                     var obj = items[i];
                     var vid = obj["id"]["videoId"];
                     var desc = obj["snippet"]["description"];
                     var thumb = obj["snippet"]["thumbnails"]["default"]["url"];
                     var title = obj["snippet"]["title"];
-                    console.log(title + "\n" + thumb + " " + desc + " " + vid);
                     sr.append("<div class='sr'><img id='" + vid + "'class='thumb' src='" + thumb + "'><span><b>" + title + "</b></span><br><span><p>" + desc + "</p></span></div>");
                 }
-                console.log("\n");
             }
         });
     }
+
+    $(".thumb").click(function() {
+        $("#searchResult").fadeOut(300);
+        var id = $(this).attr("id");
+        console.log(id);
+        window.onYouTubeIframeAPIReady = function() {
+            player = new YT.Player("player", {
+              "videoId": id,
+              "events": {
+                "onReady": onPlayerReady,
+                "onStateChange": onPlayerStateChange
+              }
+            });
+        }
+    });
 
     join.click(function() {
         socket.emit("joinRoom", {roomID: $("#roomID").val()});
@@ -71,22 +89,6 @@ window.onload = function() {
         var text = pproom.attr("value") == "Pause entire room" ? "Play entire room" : "Pause entire room";
         pproom.prop('value', text);
         return text;
-    }
-
-    var tag = document.createElement("script");
-    tag.src = "//www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName("script")[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    var player;
-    window.onYouTubeIframeAPIReady = function() {
-        player = new YT.Player("player", {
-          "videoId": "PUP7U5vTMM0",
-          "events": {
-            "onReady": onPlayerReady,
-            "onStateChange": onPlayerStateChange
-          }
-        });
     }
 
     function onPlayerReady(event) {
