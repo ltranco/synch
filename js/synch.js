@@ -58,7 +58,7 @@ window.onload = function() {
                     console.log(id);
 
                     videoID = id;
-                    
+                        player.destroy();
                         player = new YT.Player("player", {
                           "videoId": id,
                           "events": {
@@ -104,9 +104,7 @@ window.onload = function() {
     }
 
     function onPlayerReady(event) {
-        console.log(videoID);
-        player.cueVideoById(videoID);
-        player.playVideo();
+        
     }
 
     function onPlayerStateChange(event) {
