@@ -5,11 +5,6 @@ window.onload = function() {
     var myAPIKey = "AIzaSyAO9KlVoJU7WMqGsFuL5HiJgRg19hCrkCw";
     var ytQuery = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&type=video&key=" + myAPIKey;
 
-    var tag = document.createElement("script");
-    tag.src = "//www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName("script")[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
     var player;
 
     $("#search").autocomplete({
@@ -50,9 +45,15 @@ window.onload = function() {
                     $("#searchResult").fadeOut(300);
                     var id = $(this).find('.thumb').attr("id");
                     console.log(id);
+
+                    var tag = document.createElement("script");
+                    tag.src = "//www.youtube.com/iframe_api";
+                    var firstScriptTag = document.getElementsByTagName("script")[0];
+                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+                    
                     window.onYouTubeIframeAPIReady = function() {
                         player = new YT.Player("player", {
-                          "videoId": "fu-TKWyZjm0",
+                          "videoId": id,
                           "events": {
                             "onReady": onPlayerReady,
                             "onStateChange": onPlayerStateChange
