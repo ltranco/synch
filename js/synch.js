@@ -86,9 +86,6 @@ window.onload = function() {
             }
             seeking = false;
             toggling = false;
-            
-            clearInterval();
-            setInterval(reportCurrentTime(player.getCurrentTime()), 1000);
         }
 
     }
@@ -141,6 +138,8 @@ window.onload = function() {
 
     function onPlayerReady(event) {
         //event.target.playVideo();
+        clearInterval();
+        setInterval(reportCurrentTime(player.getCurrentTime()), 1000);
     }
 
     socket.on('currentTimeDone', function(data) {
