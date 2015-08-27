@@ -134,12 +134,14 @@ window.onload = function() {
     socket.on('pauseDone', function(data) {
         player.pauseVideo();
         pproom.text(data["output"]);
+        console.log(data["output"]);
         toggling = true;
     });
 
     socket.on('playDone', function(data) {
         player.playVideo();
         pproom.text(data["output"]);
+        console.log(data["output"]);
         toggling = true;
     });
 
