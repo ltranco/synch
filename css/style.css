@@ -28,7 +28,8 @@
 
 #thisRoom {
     list-style: none;
-    background-color: #33C3F0: 
+    background-color: #33C3F0;
+    border: 0px solid white;
 }
 
 #thisRoom input:hover {
