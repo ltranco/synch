@@ -69,7 +69,7 @@ window.onload = function() {
                     $("#searchResult").fadeOut(300);
                     
                     var id = $(this).find('.thumb').attr("id");
-                    videoID = id;
+                    socket.emit("videoSelected", {vid: id});
 
                     if(player) {
                         player.destroy();
@@ -99,6 +99,19 @@ window.onload = function() {
         }
     }
 
+    socket.on("videoSelectedDone", function(data) {
+        if(player) {
+            player.destroy();
+        }
+        player = new YT.Player("player", {
+          "videoId": data["vid"],
+          "events": {
+            "onReady": onPlayerReady,
+            "onStateChange": onPlayerStateChange
+          }
+        });
+    });
+
     pproom.click(function() {
         var text = pproom.attr("value");
         console.log(text);
@@ -121,8 +134,6 @@ window.onload = function() {
     function onPlayerReady(event) {
         //event.target.playVideo();
     }
-
-
 
     socket.on('currentTimeDone', function(data) {
         player.seekTo(parseInt(data["currentTime"]));
