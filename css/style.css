@@ -58,6 +58,8 @@ body {
 	margin: 0 40px 10px 40px;
 	text-align: center;
 	background-color: white;
+	box-shadow: 10px 10px 5px #888888;
+	padding: 10px 10px 10px 10px;
 }
 
 #searchResult img {
