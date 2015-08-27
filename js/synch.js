@@ -6,9 +6,10 @@ window.onload = function() {
     var ytQuery = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&type=video&key=" + myAPIKey;
 
     var player;
+    var videoID = "";
     window.onYouTubeIframeAPIReady = function() {
         player = new YT.Player("player", {
-          "videoId": id,
+          "videoId": "",
           "events": {
             "onReady": onPlayerReady,
             "onStateChange": onPlayerStateChange
@@ -56,7 +57,7 @@ window.onload = function() {
                     var id = $(this).find('.thumb').attr("id");
                     console.log(id);
 
-                    
+                    videoID = id;
                     
                         player = new YT.Player("player", {
                           "videoId": id,
@@ -66,8 +67,8 @@ window.onload = function() {
                           }
                         });
                     
-                    console.log(player);
                     //player.loadVideoById(id);
+
                 });
             }
         });
@@ -103,6 +104,7 @@ window.onload = function() {
     }
 
     function onPlayerReady(event) {
+        console.log(videoID);
         //event.target.playVideo();
     }
 
