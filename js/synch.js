@@ -90,7 +90,6 @@ window.onload = function() {
     }
 
     socket.on("videoSelectedDone", function(data) {
-        console.log("videoSelectedDone");
         createNewPlayer(data["vid"]);
     });
 
@@ -99,7 +98,6 @@ window.onload = function() {
             s = 0;
         }
         if(player) {
-            console.log("destroy player");
             player.destroy();
         }
         player = new YT.Player("player", {
@@ -115,13 +113,10 @@ window.onload = function() {
 
     pproom.click(function() {
         var text = pproom.attr("value");
-        console.log(text);
         if(text == "Pause entire room") {
-            console.log("emiting paus");
             socket.emit("pause");    
         }
         else {
-            console.log("emiting play");
             socket.emit("play");
         }
     });
@@ -145,14 +140,12 @@ window.onload = function() {
         player.pauseVideo();
         pproom.attr('value', data["output"]);
         toggling = true;
-        console.log("pause dones!!!");
     });
 
     socket.on('playDone', function(data) {
         player.playVideo();
         pproom.attr('value', data["output"]);
         toggling = true;
-        console.log("play done");
     });
 
     socket.on('joinRoomDone', function(output) {    
@@ -160,12 +153,13 @@ window.onload = function() {
         output = output["output"];
 
         if(output == "nonexistent") {
-        nonexistent();
-        return;
+            nonexistent();
+            return;
         }
 
         if(!isDisconnecting) {
-        createNewPlayer(output["url"], output["time"]);  
+            console.log("someone just left")
+            createNewPlayer(output["url"], output["time"]);  
         }
 
         updateClientList(output["clientsList"]); 
