@@ -29,7 +29,9 @@ window.onload = function() {
             dataType: 'jsonp',
             success: function(data) { 
                 var items = data["items"];
+
                 for(var i in items) {
+                    console.log(items[i]);
                     var obj = items[i];
                     var vid = obj["id"]["videoId"];
                     var desc = obj["snippet"]["description"];
