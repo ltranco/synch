@@ -28,8 +28,6 @@
 
 #thisRoom {
     list-style: none;
-    background-color: #33C3F0;
-    border: 0px solid white;
 }
 
 #thisRoom input:hover {
@@ -38,6 +36,7 @@
 #thisRoom input {
 	margin: 0 5px 0 0;
 	background-color: #ff8f00;
+	border: 0px solid white;
 }
 
 #thisRoom li { 
