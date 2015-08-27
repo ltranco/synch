@@ -75,18 +75,14 @@ body {
 }
 
 .sr span {
-	display: block;
-}
-
-.sr b, .sr p {
+	display: inline-block;
 	float: left;
 }
 
-.sr b {
+.sr b, .sr p {
 	margin: 0 0 0 20px;
-	font-size: 20px;
 }
 
-.sr p {
-	margin: 0px 5px 0 20px;
+.sr b {
+	font-size: 20px;
 }
