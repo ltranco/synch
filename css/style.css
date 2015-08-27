@@ -27,13 +27,12 @@ body {
     list-style: none;
 }
 
-#thisRoom input:hover {
+.client:hover {
 	cursor: default;
 }
-#thisRoom input {
+.client {
 	margin: 0 5px 10px 0;
 	background-color: #ff8f00;
-	border: 0px solid white;
 }
 
 #vid {
