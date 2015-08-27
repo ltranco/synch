@@ -105,8 +105,8 @@ window.onload = function() {
 
     function onPlayerReady(event) {
         console.log(videoID);
-        player.loadVideoById(videoID);
-        //event.target.playVideo();
+        player.cueVideoById(videoID);
+        player.playVideo();
     }
 
     function onPlayerStateChange(event) {
