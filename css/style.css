@@ -53,3 +53,13 @@ body {
     text-align: center;
     min-width: 100%;
 }
+
+#searchResult {
+	margin: 0 40px 10px 40px;
+	text-align: center;
+	background-color: white;
+}
+
+#searchResult img {
+	float: left;
+}
