@@ -186,7 +186,7 @@ window.onload = function() {
     function updateClientList(cList) {
         thisRoom.empty();
         for(var i in cList) {
-            thisRoom.append("<a class=\"waves-effect blue darken-3 waves-light client btn\">" + cList[i] + "</a>");
+            thisRoom.append("<a class=\"waves-effect waves-light client btn\">" + cList[i] + "</a>");
         }
         thisRoom.append("<br>");
         $("#joining").hide();
