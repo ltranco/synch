@@ -58,7 +58,6 @@ body {
 
 #searchResult {
 	display: none;
-	text-align: center;
 	background-color: white;
 	padding: 30px 30px 30px 30px;
 }
@@ -78,9 +77,7 @@ body {
 	display: inline-block;
 	float: left;
 }
-.sr br {
-	float: left;
-}
+
 .sr b, .sr p {
 	margin: 0 0 0 20px;
 }
