@@ -13,9 +13,9 @@ window.onload = function() {
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    window.onYouTubeIframeAPIReady = function() {
+    function onYouTubeIframeAPIReady {
         player = new YT.Player("player", {
-          "videoId": "",
+          "videoId": "IvN5h9BE444",
           "events": {
             "onReady": onPlayerReady,
             "onStateChange": onPlayerStateChange
@@ -64,17 +64,9 @@ window.onload = function() {
                     console.log(id);
 
                     videoID = id;
-                        player = null;
-                        $("#player").empty();
-                        player = new YT.Player("player", {
-                          "videoId": id,
-                          "events": {
-                            "onReady": onPlayerReady,
-                            "onStateChange": onPlayerStateChange
-                          }
-                        });
+                
                     
-                    //player.loadVideoById(id);
+                    player.loadVideoById(id);
 
                 });
             }
