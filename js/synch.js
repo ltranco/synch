@@ -2,6 +2,8 @@ window.onload = function() {
 	var socket = io('https://synch-backend.herokuapp.com/');
     var seeking = false, toggling = false;
     var thisRoom = $("#thisRoom"), idButton = $("#roomIDButton"), pproom = $("#playPauseRoom"), join = $("#join");
+    var myAPIKey = "AIzaSyAO9KlVoJU7WMqGsFuL5HiJgRg19hCrkCw";
+    var ytQuery = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&type=video&key=" + myAPIKey;
 
     $("#search").autocomplete({
         source: function(request, response){
@@ -17,9 +19,19 @@ window.onload = function() {
             });
         },
         select: function( event, ui ) {
-            console.log(ui.item.label);
+            queryAndDisplayVideos(ui.item.label);
         }
-    });    
+    });
+
+    function queryAndDisplayVideos(term) {
+        $.ajax({
+            url: ytQuery + "&q=" + term,  
+            dataType: 'jsonp',
+            success: function(data) { 
+                console.log(data);
+            }
+        });
+    }
 
     join.click(function() {
         socket.emit("joinRoom", {roomID: $("#roomID").val()});
