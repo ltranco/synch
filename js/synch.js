@@ -55,14 +55,14 @@ window.onload = function() {
             dataType: 'jsonp',
             success: function(data) { 
                 var items = data["items"];
-                var sr = $("#searchResult").show().empty();
+                var sr = $("#searchResult").css("display", "block").empty();
                 for(var i in items) {
                     var obj = items[i];
                     var vid = obj["id"]["videoId"];
                     var desc = obj["snippet"]["description"];
                     var thumb = obj["snippet"]["thumbnails"]["default"]["url"];
                     var title = obj["snippet"]["title"];
-                    sr.append("<tr><td><a class='vidlink'><img id='" + vid + "'class='thumb' src='" + thumb + "'></a></td><td><b>" + title + "</b><br><p>" + desc + "</p></td></tr>");
+                    sr.append("<tr><td><a class='vidlink'><img id='" + vid + "'class='thumb' src='" + thumb + "'></a></td><td><b>" + title + "</b><p>" + desc + "</p></td></tr>");
                 }
 
                 $(".vidlink").click(function() {
