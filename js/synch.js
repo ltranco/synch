@@ -114,7 +114,7 @@ window.onload = function() {
     }
 
     pproom.click(function() {
-        var text = pproom.attr("value");
+        var text = pproom.text();
         if(text == "Pause entire room") {
             socket.emit("pause");    
         }
@@ -124,8 +124,8 @@ window.onload = function() {
     });
 
     function togglePPRoom() {
-        var text = pproom.attr("value") == "Pause entire room" ? "Play entire room" : "Pause entire room";
-        pproom.prop('value', text);
+        var text = pproom.text() == "Pause entire room" ? "Play entire room" : "Pause entire room";
+        pproom.text(text);
         return text;
     }
 
