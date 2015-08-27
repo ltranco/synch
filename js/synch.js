@@ -87,12 +87,14 @@ window.onload = function() {
         player.pauseVideo();
         pproom.attr('value', data["output"]);
         toggling = true;
+        console.log("pause dones!!!");
     });
 
     socket.on('playDone', function(data) {
         player.playVideo();
         pproom.attr('value', data["output"]);
         toggling = true;
+        console.log("play done");
     });
 
     socket.on('joinRoomDone', function(output) {
