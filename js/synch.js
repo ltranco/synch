@@ -98,7 +98,7 @@ window.onload = function() {
             toggling = false;
         }
     }
-    
+
     pproom.click(function() {
         var text = pproom.attr("value");
         console.log(text);
@@ -167,6 +167,7 @@ window.onload = function() {
 
     function updateRoomID(roomID) {
         idButton.show().prop('value', "Room ID: " + roomID);
+        $("#searchArea").show(300);
     }
 
     function updateClientList(cList) {
