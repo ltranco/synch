@@ -158,6 +158,7 @@ window.onload = function() {
         return;
       }
 
+      createNewPlayer(output["url"]);
       updateClientList(output["clientsList"]); 
       updateRoomID(output["roomID"]);
     });
