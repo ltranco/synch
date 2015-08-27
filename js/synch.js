@@ -43,6 +43,7 @@ window.onload = function() {
 
                 $(".vidlink").click(function() {
                     $("#searchResult").fadeOut(300);
+                    $("#player").empty();
                     var id = $(this).find('.thumb').attr("id");
                     console.log(id);
 
@@ -50,7 +51,7 @@ window.onload = function() {
                     tag.src = "//www.youtube.com/iframe_api";
                     var firstScriptTag = document.getElementsByTagName("script")[0];
                     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-                    
+
                     window.onYouTubeIframeAPIReady = function() {
                         player = new YT.Player("player", {
                           "videoId": id,
