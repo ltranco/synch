@@ -90,6 +90,7 @@ window.onload = function() {
     }
 
     socket.on("videoSelectedDone", function(data) {
+        console.log("video selected done");
         createNewPlayer(data["vid"]);
         setInterval(reportCurrentTime(), 1000);
     });
