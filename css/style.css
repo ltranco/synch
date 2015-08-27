@@ -6,6 +6,9 @@ body {
 	display: none;
 }
 
+#searchArea {
+	margin-top: 25px;
+}
 #search {
 	width: 400px;
 	color: black;
