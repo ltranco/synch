@@ -32,6 +32,7 @@ body {
 }
 .client {
 	background-color: #ff8f00 !important;
+	margin-right: 5px;
 }
 
 #vid {
