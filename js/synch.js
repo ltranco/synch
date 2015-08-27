@@ -45,25 +45,27 @@ window.onload = function() {
                     var title = obj["snippet"]["title"];
                     sr.append("<div class='sr'><a class='vidlink'><img id='" + vid + "'class='thumb' src='" + thumb + "'></a><span><b>" + title + "</b></span><br><span><p>" + desc + "</p></span></div>");
                 }
+
+                $(".vidlink").click(function() {
+                    console.log("hello");
+                    $("#searchResult").fadeOut(300);
+                    var id = $(this).find('.thumb').attr("id");
+                    console.log(id);
+                    window.onYouTubeIframeAPIReady = function() {
+                        player = new YT.Player("player", {
+                          "videoId": id,
+                          "events": {
+                            "onReady": onPlayerReady,
+                            "onStateChange": onPlayerStateChange
+                          }
+                        });
+                    }
+                });
             }
         });
     }
 
-    $(".vidlink").click(function() {
-        console.log("hello");
-        $("#searchResult").fadeOut(300);
-        var id = $(this).find('.thumb').attr("id");
-        console.log(id);
-        window.onYouTubeIframeAPIReady = function() {
-            player = new YT.Player("player", {
-              "videoId": id,
-              "events": {
-                "onReady": onPlayerReady,
-                "onStateChange": onPlayerStateChange
-              }
-            });
-        }
-    });
+    
 
     join.click(function() {
         socket.emit("joinRoom", {roomID: $("#roomID").val()});
