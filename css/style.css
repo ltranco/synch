@@ -20,6 +20,7 @@ body {
 #init {
 	text-align: center;
 	color: white;
+	padding: 10px;
 }
 
 #roomIDButton {
