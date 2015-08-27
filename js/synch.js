@@ -30,12 +30,14 @@ window.onload = function() {
     });
 
     pproom.click(function() {
-        console.log("pproom clicked");
         var text = pproom.attr("value");
+        console.log(text);
         if(text == "Pause entire room") {
+            console.log("emiting paus");
             socket.emit("pause");    
         }
         else {
+            console.log("emiting play");
             socket.emit("play");
         }
     });
