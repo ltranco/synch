@@ -19,9 +19,6 @@ body {
 	padding: 25px 10px 0px 25px;
 }
 
-#roomIDButton {
-	font-size: 20px;
-}
 #roomIDButton:hover {
 	cursor: default;
 }
