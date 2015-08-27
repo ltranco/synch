@@ -7,6 +7,12 @@ window.onload = function() {
 
     var player;
     var videoID = "";
+    
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
     window.onYouTubeIframeAPIReady = function() {
         player = new YT.Player("player", {
           "videoId": "",
@@ -58,7 +64,7 @@ window.onload = function() {
                     console.log(id);
 
                     videoID = id;
-                        player.destroy();
+                        
                         player = new YT.Player("player", {
                           "videoId": id,
                           "events": {
