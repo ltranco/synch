@@ -123,12 +123,6 @@ window.onload = function() {
         }
     });
 
-    function togglePPRoom() {
-        var text = pproom.text() == "Pause entire room" ? "Play entire room" : "Pause entire room";
-        pproom.text(text);
-        return text;
-    }
-
     function onPlayerReady(event) {
     }
 
@@ -139,13 +133,13 @@ window.onload = function() {
 
     socket.on('pauseDone', function(data) {
         player.pauseVideo();
-        pproom.attr('value', data["output"]);
+        pproom.text(data["output"]);
         toggling = true;
     });
 
     socket.on('playDone', function(data) {
         player.playVideo();
-        pproom.attr('value', data["output"]);
+        pproom.text(data["output"]);
         toggling = true;
     });
 
