@@ -71,17 +71,7 @@ window.onload = function() {
                     var id = $(this).find('.thumb').attr("id");
                     socket.emit("videoSelected", {vid: id});
 
-                    if(player) {
-                        player.destroy();
-                    }
-
-                    player = new YT.Player("player", {
-                      "videoId": id,
-                      "events": {
-                        "onReady": onPlayerReady,
-                        "onStateChange": onPlayerStateChange
-                      }
-                    });
+                    createNewPlayer(id);
                 });
             }
         });
@@ -101,18 +91,22 @@ window.onload = function() {
 
     socket.on("videoSelectedDone", function(data) {
         console.log("videoSelectedDone");
+        createNewPlayer(data["vid"]);
+    });
+
+    function createNewPlayer(vid) {
         if(player) {
             console.log("destroy player");
             player.destroy();
         }
         player = new YT.Player("player", {
-          "videoId": data["vid"],
+          "videoId": vid,
           "events": {
             "onReady": onPlayerReady,
             "onStateChange": onPlayerStateChange
           }
         });
-    });
+    }
 
     pproom.click(function() {
         var text = pproom.attr("value");
@@ -163,6 +157,7 @@ window.onload = function() {
         nonexistent();
         return;
       }
+
       updateClientList(output["clientsList"]); 
       updateRoomID(output["roomID"]);
     });
