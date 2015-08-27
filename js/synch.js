@@ -43,15 +43,16 @@ window.onload = function() {
                     var desc = obj["snippet"]["description"];
                     var thumb = obj["snippet"]["thumbnails"]["default"]["url"];
                     var title = obj["snippet"]["title"];
-                    sr.append("<div class='sr'><img id='" + vid + "'class='thumb' src='" + thumb + "'><span><b>" + title + "</b></span><br><span><p>" + desc + "</p></span></div>");
+                    sr.append("<div class='sr'><a class='vidlink'><img id='" + vid + "'class='thumb' src='" + thumb + "'></a><span><b>" + title + "</b></span><br><span><p>" + desc + "</p></span></div>");
                 }
             }
         });
     }
 
-    $(".thumb").click(function() {
+    $(".vidlink").click(function() {
+        console.log("hello");
         $("#searchResult").fadeOut(300);
-        var id = $(this).attr("id");
+        var id = $(this).find('.thumb').attr("id");
         console.log(id);
         window.onYouTubeIframeAPIReady = function() {
             player = new YT.Player("player", {
