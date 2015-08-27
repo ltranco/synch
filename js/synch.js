@@ -56,6 +56,7 @@ window.onload = function() {
                     console.log(id);
 
                     
+                    window.onYouTubeIframeAPIReady = function() {
                         player = new YT.Player("player", {
                           "videoId": id,
                           "events": {
@@ -63,7 +64,7 @@ window.onload = function() {
                             "onStateChange": onPlayerStateChange
                           }
                         });
-
+                    }
 
                     player.loadVideoById(id);
                 });
