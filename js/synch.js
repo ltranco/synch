@@ -67,7 +67,7 @@ window.onload = function() {
                         });
                     
                     console.log(player);
-                    player.loadVideoById(id);
+                    //player.loadVideoById(id);
                 });
             }
         });
