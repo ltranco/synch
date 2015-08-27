@@ -59,12 +59,13 @@ window.onload = function() {
 
                 $(".vidlink").click(function() {
                     $("#searchResult").fadeOut(300);
-                    $("#player").empty();
+                    
                     var id = $(this).find('.thumb').attr("id");
                     console.log(id);
 
                     videoID = id;
-                        
+                        player = null;
+                        $("#player").empty();
                         player = new YT.Player("player", {
                           "videoId": id,
                           "events": {
