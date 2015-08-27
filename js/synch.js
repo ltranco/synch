@@ -5,21 +5,7 @@ window.onload = function() {
     var myAPIKey = "AIzaSyAO9KlVoJU7WMqGsFuL5HiJgRg19hCrkCw";
     var ytQuery = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&type=video&key=" + myAPIKey;
 
-    try {
-        var $_console$$ = console;
-        Object.defineProperty(window, "console", {
-            get: function() {
-                if ($_console$$._commandLineAPI)
-                    throw "Sorry, for security reasons, the script console is deactivated on netflix.com";
-                return $_console$$
-            },
-            set: function($val$$) {
-                $_console$$ = $val$$
-            }
-        })
-    } catch ($ignore$$) {
-    }
-
+    //Autocomplete for search box
     $("#search").autocomplete({
         source: function(request, response){
             var apiKey = 'AI39si7ZLU83bKtKd4MrdzqcjTVI3DK9FvwJR6a4kB_SW_Dbuskit-mEYqskkSsFLxN5DiG1OBzdHzYfW0zXWjxirQKyxJfdkg';
@@ -38,37 +24,15 @@ window.onload = function() {
         }
     });
 
+    //Initializing YouTube API Player
     var tag = document.createElement("script");
     tag.src = "//www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName("script")[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    $(".vidlink").click(function() {
-        $("#searchResult").fadeOut(300);
-        
-        var id = $(this).find('.thumb').attr("id");
-        console.log(id);
-
-        videoID = id;
-            
-            $("#player").empty();
-            player = new YT.Player("player", {
-              "videoId": id,
-              "events": {
-                "onReady": onPlayerReady,
-                "onStateChange": onPlayerStateChange
-              }
-            });
-        
-        //player.loadVideoById(id);
-
-    });
-    
-
     var player;
     window.onYouTubeIframeAPIReady = function() {
         player = new YT.Player("player", {
-          "videoId": "PUP7U5vTMM0",
+          "videoId": "",
           "events": {
             "onReady": onPlayerReady,
             "onStateChange": onPlayerStateChange
@@ -84,7 +48,8 @@ window.onload = function() {
         socket.emit("newRoom");
     });
 
-        function queryAndDisplayVideos(term) {
+    //Query for videos based on search term and display them
+    function queryAndDisplayVideos(term) {
         $.ajax({
             url: ytQuery + "&q=" + term,  
             dataType: 'jsonp',
@@ -104,29 +69,36 @@ window.onload = function() {
                     $("#searchResult").fadeOut(300);
                     
                     var id = $(this).find('.thumb').attr("id");
-                    console.log(id);
-
                     videoID = id;
 
                     if(player) {
                         player.destroy();
                     }
-                        player = new YT.Player("player", {
-                          "videoId": id,
-                          "events": {
-                            "onReady": onPlayerReady,
-                            "onStateChange": onPlayerStateChange
-                          }
-                        });
-                    
-                    //player.loadVideoById(id);
 
+                    player = new YT.Player("player", {
+                      "videoId": id,
+                      "events": {
+                        "onReady": onPlayerReady,
+                        "onStateChange": onPlayerStateChange
+                      }
+                    });
                 });
             }
         });
     }
 
-
+    function onPlayerStateChange(event) {
+        var time, rate, remainingTime;
+        time = player.getCurrentTime();
+        if(event.data == YT.PlayerState.PLAYING) {
+            if(!seeking && !toggling) {
+                socket.emit("currentTime", {currentTime: time});    
+            }
+            seeking = false;
+            toggling = false;
+        }
+    }
+    
     pproom.click(function() {
         var text = pproom.attr("value");
         console.log(text);
@@ -150,17 +122,7 @@ window.onload = function() {
         //event.target.playVideo();
     }
 
-    function onPlayerStateChange(event) {
-        var time, rate, remainingTime;
-        time = player.getCurrentTime();
-        if(event.data == YT.PlayerState.PLAYING) {
-            if(!seeking && !toggling) {
-                socket.emit("currentTime", {currentTime: time});    
-            }
-            seeking = false;
-            toggling = false;
-        }
-    }
+
 
     socket.on('currentTimeDone', function(data) {
         player.seekTo(parseInt(data["currentTime"]));
