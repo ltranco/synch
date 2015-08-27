@@ -95,11 +95,6 @@ window.onload = function() {
         createNewPlayer(data["vid"]);
     });
 
-    function reportCurrentTime(time) {
-        console.log('currentTime is ' + time);
-        socket.emit("reportCurrentTime", {currentTimeReport: time});
-    }
-
     function createNewPlayer(vid, s) {
         if(!s) {
             s = 0;
@@ -135,9 +130,6 @@ window.onload = function() {
     }
 
     function onPlayerReady(event) {
-        //event.target.playVideo();
-        clearInterval();
-        myInterval = setInterval(reportCurrentTime(), 1000);
     }
 
     socket.on('currentTimeDone', function(data) {
