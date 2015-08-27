@@ -7,25 +7,29 @@
   <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
   <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.11.4/jquery-ui.min.css">
   <body>
-    <div id="init">
-      <span id="joining">
-        <input id="roomID" type="text" placeholder="Enter 5-digit room ID">
-        <a id="join" class="waves-effect waves-light btn">Join This Room</a> or
-        <a id="new" class="waves-effect waves-light btn">New Room</a>
-      </span>
-      <input id="roomIDButton" class="button-primary" type="button" value=""><br>
-      <span id="thisRoom"></span>
-      <span id="searchArea">
-        <input id="search" type="text" placeholder="Search YouTube">
-        <input id="searchYT" class="button-primary" type="button" value="Search">
-      </span>
-    </div>
+    <div class="container">
+      <div id="init">
+        <span id="joining">
+          <div class="row">
+            <div class="col s4"><input id="roomID" type="text" placeholder="Enter 5-digit room ID"></div>
+            <div class="col s4"><a id="join" class="waves-effect waves-light btn">Join This Room</a></div>
+            <div class="col s4"><a id="new" class="waves-effect waves-light btn">New Room</a></div>
+          </div>
+        </span>
+        <input id="roomIDButton" class="button-primary" type="button" value=""><br>
+        <span id="thisRoom"></span>
+        <span id="searchArea">
+          <input id="search" type="text" placeholder="Search YouTube">
+          <input id="searchYT" class="button-primary" type="button" value="Search">
+        </span>
+      </div>
 
-    <div id="searchResult"></div>
+      <div id="searchResult"></div>
 
-    <div id="vid">
-      <div id="player"></div><br>
-      <input id="playPauseRoom" class="button-primary" title="Play/Pause everyone's videos" type="button" value="Pause entire room">
+      <div id="vid">
+        <div id="player"></div><br>
+        <input id="playPauseRoom" class="button-primary" title="Play/Pause everyone's videos" type="button" value="Pause entire room">
+      </div>
     </div>
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
