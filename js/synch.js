@@ -29,6 +29,7 @@ window.onload = function() {
             dataType: 'jsonp',
             success: function(data) { 
                 var items = data["items"];
+                var sr = $("#searchResult").empty();
 
                 for(var i in items) {
                     console.log(items[i]);
@@ -38,6 +39,7 @@ window.onload = function() {
                     var thumb = obj["snippet"]["thumbnails"]["default"]["url"];
                     var title = obj["snippet"]["title"];
                     console.log(title + "\n" + thumb + " " + desc + " " + vid);
+                    sr.append("<div><img id='" + vid + "'class='thumb' src='" + thumb + "'>" + title + " " + description + "</div>");
                 }
                 console.log("\n");
             }
