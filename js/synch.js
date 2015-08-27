@@ -28,7 +28,16 @@ window.onload = function() {
             url: ytQuery + "&q=" + term,  
             dataType: 'jsonp',
             success: function(data) { 
-                console.log(data);
+                var items = data["items"];
+                for(var i in items) {
+                    var obj = items[i];
+                    var vid = obj["id"]["videoId"];
+                    var desc = obj["snippet"]["description"];
+                    var thumb = obj["thumbnails"]["default"]["url"];
+                    var title = obj["title"];
+                    console.log(title + "\n" + thumb + " " + desc + " " + vid);
+                }
+                console.log("\n");
             }
         });
     }
