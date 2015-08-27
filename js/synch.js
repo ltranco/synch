@@ -47,13 +47,12 @@ window.onload = function() {
                 }
 
                 $(".vidlink").click(function() {
-                    console.log("hello");
                     $("#searchResult").fadeOut(300);
                     var id = $(this).find('.thumb').attr("id");
                     console.log(id);
                     window.onYouTubeIframeAPIReady = function() {
                         player = new YT.Player("player", {
-                          "videoId": id,
+                          "videoId": "fu-TKWyZjm0",
                           "events": {
                             "onReady": onPlayerReady,
                             "onStateChange": onPlayerStateChange
