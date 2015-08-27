@@ -21,16 +21,9 @@ body {
 
 #roomIDButton {
 	font-size: 20px;
-	margin-bottom: 15px;
 }
 #roomIDButton:hover {
 	cursor: default;
-}
-
-#join, #new {
-	width: 180px;
-	color: black;
-	background-color: white;
 }
 
 #thisRoom {
@@ -52,8 +45,6 @@ body {
 }
 
 #init, #searchResult {
-	margin: 30px 40px 40px 40px;
-	box-shadow: 0 5px 10px 0 rgba(0,0,0,0.18), 0 5px 10px 0 rgba(0,0,0,0.18);
 }
 
 #searchResult {
