@@ -4,7 +4,7 @@ window.onload = function() {
     var thisRoom = $("#thisRoom"), idButton = $("#roomIDButton"), pproom = $("#playPauseRoom"), join = $("#join"), videoDiv = $("#vid");
     var myAPIKey = "AIzaSyAO9KlVoJU7WMqGsFuL5HiJgRg19hCrkCw";
     var ytQuery = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&type=video&key=" + myAPIKey;
-
+    var myInterval;
     //Autocomplete for search box
     $("#search").autocomplete({
         source: function(request, response){
@@ -117,7 +117,7 @@ window.onload = function() {
         });
         videoDiv.show();
         clearInterval();
-        setInterval(reportCurrentTime(), 1000);
+        myInterval = setInterval(reportCurrentTime(), 1000);
     }
 
     pproom.click(function() {
