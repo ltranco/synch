@@ -3,7 +3,7 @@ body {
 }
 
 table {
-	width: inherit;
+	width: inherit !important;
 }
 #roomIDButton, #searchArea, #vid {
 	display: none;
