@@ -32,7 +32,7 @@ window.onload = function() {
     var player;
     window.onYouTubeIframeAPIReady = function() {
         player = new YT.Player("player", {
-          "videoId": "",
+          "videoId": "QeCDTYszuho",
           "events": {
             "onReady": onPlayerReady,
             "onStateChange": onPlayerStateChange
