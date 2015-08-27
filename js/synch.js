@@ -35,9 +35,9 @@ window.onload = function() {
                     var obj = items[i];
                     var vid = obj["id"]["videoId"];
                     var desc = obj["snippet"]["description"];
-                    //var thumb = obj["thumbnails"]["default"]["url"];
-                    var title = obj["title"];
-                    console.log(title + "\n"  + " " + desc + " " + vid);
+                    var thumb = obj["snippet"]["thumbnails"]["default"]["url"];
+                    var title = obj["snippet"]["title"];
+                    console.log(title + "\n" + thumb + " " + desc + " " + vid);
                 }
                 console.log("\n");
             }
