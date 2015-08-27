@@ -15,6 +15,7 @@ window.onload = function() {
           }
         });
     }
+
     $("#search").autocomplete({
         source: function(request, response){
             var apiKey = 'AI39si7ZLU83bKtKd4MrdzqcjTVI3DK9FvwJR6a4kB_SW_Dbuskit-mEYqskkSsFLxN5DiG1OBzdHzYfW0zXWjxirQKyxJfdkg';
@@ -56,7 +57,7 @@ window.onload = function() {
                     console.log(id);
 
                     
-                    window.onYouTubeIframeAPIReady = function() {
+                    
                         player = new YT.Player("player", {
                           "videoId": id,
                           "events": {
@@ -64,8 +65,8 @@ window.onload = function() {
                             "onStateChange": onPlayerStateChange
                           }
                         });
-                    }
-
+                    
+                    console.log(player);
                     player.loadVideoById(id);
                 });
             }
