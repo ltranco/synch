@@ -150,6 +150,7 @@ window.onload = function() {
 
     socket.on('joinRoomDone', function(output) {    
         var isDisconnecting = output["disconnect"];
+        console.log("isDisconnecting " + isDisconnecting);
         output = output["output"];
 
         if(output == "nonexistent") {
