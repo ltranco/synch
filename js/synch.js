@@ -13,7 +13,7 @@ window.onload = function() {
     var firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    function onYouTubeIframeAPIReady {
+    function onYouTubeIframeAPIReady() {
         player = new YT.Player("player", {
           "videoId": "IvN5h9BE444",
           "events": {
