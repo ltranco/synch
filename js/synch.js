@@ -86,8 +86,11 @@ window.onload = function() {
             }
             seeking = false;
             toggling = false;
+            
+            clearInterval();
+            setInterval(reportCurrentTime(player.getCurrentTime()), 1000);
         }
-        setInterval(reportCurrentTime(player.getCurrentTime()), 1000);
+
     }
 
     socket.on("videoSelectedDone", function(data) {
