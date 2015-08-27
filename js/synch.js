@@ -17,7 +17,7 @@ window.onload = function() {
             });
         },
         select: function( event, ui ) {
-            console.log(ui.item.label);
+            queryAndDisplayVideos(ui.item.label);
         }
     });
 
@@ -26,7 +26,63 @@ window.onload = function() {
     var firstScriptTag = document.getElementsByTagName("script")[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-<<<<<<< HEAD
+    $(".vidlink").click(function() {
+        $("#searchResult").fadeOut(300);
+        
+        var id = $(this).find('.thumb').attr("id");
+        console.log(id);
+
+        videoID = id;
+            
+            $("#player").empty();
+            player = new YT.Player("player", {
+              "videoId": id,
+              "events": {
+                "onReady": onPlayerReady,
+                "onStateChange": onPlayerStateChange
+              }
+            });
+        
+        //player.loadVideoById(id);
+
+    });
+    
+
+    var player;
+    window.onYouTubeIframeAPIReady = function() {
+        player = new YT.Player("player", {
+          "videoId": "PUP7U5vTMM0",
+          "events": {
+            "onReady": onPlayerReady,
+            "onStateChange": onPlayerStateChange
+          }
+        });
+    }
+
+    join.click(function() {
+        socket.emit("joinRoom", {roomID: $("#roomID").val()});
+    });
+
+    $("#new").click(function() {
+        socket.emit("newRoom");
+    });
+
+        function queryAndDisplayVideos(term) {
+        $.ajax({
+            url: ytQuery + "&q=" + term,  
+            dataType: 'jsonp',
+            success: function(data) { 
+                var items = data["items"];
+                var sr = $("#searchResult").show().empty();
+                for(var i in items) {
+                    var obj = items[i];
+                    var vid = obj["id"]["videoId"];
+                    var desc = obj["snippet"]["description"];
+                    var thumb = obj["snippet"]["thumbnails"]["default"]["url"];
+                    var title = obj["snippet"]["title"];
+                    sr.append("<div class='sr'><a class='vidlink'><img id='" + vid + "'class='thumb' src='" + thumb + "'></a><span><b>" + title + "</b></span><br><span><p>" + desc + "</p></span></div>");
+                }
+
                 $(".vidlink").click(function() {
                     $("#searchResult").fadeOut(300);
                     
@@ -34,7 +90,7 @@ window.onload = function() {
                     console.log(id);
 
                     videoID = id;
-                        
+                        player = null;
                         $("#player").empty();
                         player = new YT.Player("player", {
                           "videoId": id,
@@ -48,26 +104,9 @@ window.onload = function() {
 
                 });
             }
-=======
-    var player;
-    window.onYouTubeIframeAPIReady = function() {
-        player = new YT.Player("player", {
-          "videoId": "PUP7U5vTMM0",
-          "events": {
-            "onReady": onPlayerReady,
-            "onStateChange": onPlayerStateChange
-          }
->>>>>>> e96963e9fe64fcec3681c6dfb7849c92572fcc5b
         });
     }
 
-    join.click(function() {
-        socket.emit("joinRoom", {roomID: $("#roomID").val()});
-    });
-
-    $("#new").click(function() {
-        socket.emit("newRoom");
-    });
 
     pproom.click(function() {
         var text = pproom.attr("value");
