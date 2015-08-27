@@ -74,8 +74,9 @@ body {
 
 .sr b {
 	margin: 0 0 0 20px;
+	font-size: 20px;
 }
 
 .sr p {
-	margin: -25px 5px 0 20px;
+	margin: 0px 5px 0 20px;
 }
