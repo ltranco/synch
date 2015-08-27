@@ -100,7 +100,9 @@ window.onload = function() {
     }
 
     socket.on("videoSelectedDone", function(data) {
+        console.log("videoSelectedDone");
         if(player) {
+            console.log("destroy player");
             player.destroy();
         }
         player = new YT.Player("player", {
