@@ -95,6 +95,7 @@ window.onload = function() {
     });
 
     function reportCurrentTime() {
+        console.log('currentTime is ' + player.getCurrentTime());
         socket.emit("reportCurrentTime", {currentTimeReport: player.getCurrentTime()});
     }
 
