@@ -94,13 +94,17 @@ window.onload = function() {
         createNewPlayer(data["vid"]);
     });
 
-    function createNewPlayer(vid) {
+    function createNewPlayer(vid, s) {
+        if(!s) {
+            s = 0;
+        }
         if(player) {
             console.log("destroy player");
             player.destroy();
         }
         player = new YT.Player("player", {
           "videoId": vid,
+          "start": s,
           "events": {
             "onReady": onPlayerReady,
             "onStateChange": onPlayerStateChange
@@ -159,13 +163,9 @@ window.onload = function() {
         return;
       }
 
+      createNewPlayer(output["url"], output["time"]);
       updateClientList(output["clientsList"]); 
       updateRoomID(output["roomID"]);
-    });
-
-    socket.on('joinRoomDoneLoadVideo', function(output) {
-        console.log("I'm a newcomer. Load my video!");
-        createNewPlayer(output["url"]);
     });
 
     socket.on('newRoomDone', function(output) {
