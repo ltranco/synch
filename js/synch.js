@@ -1,28 +1,23 @@
-window.onload = function() {
-	var socket = io('https://synch-backend.herokuapp.com/');
-    var seeking = false, toggling = false;
-    var thisRoom = $("#thisRoom"), idButton = $("#roomIDButton"), pproom = $("#playPauseRoom"), join = $("#join");
-    var myAPIKey = "AIzaSyAO9KlVoJU7WMqGsFuL5HiJgRg19hCrkCw";
-    var ytQuery = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&type=video&key=" + myAPIKey;
-
-    var player;
-    var videoID = "";
-    
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/player_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
+    var tag = document.createElement("script");
+    tag.src = "//www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName("script")[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    function onYouTubeIframeAPIReady() {
-        console.log("frame ready");
+    var player;
+    window.onYouTubeIframeAPIReady = function() {
         player = new YT.Player("player", {
-          "videoId": "IvN5h9BE444",
+          "videoId": "PUP7U5vTMM0",
           "events": {
             "onReady": onPlayerReady,
             "onStateChange": onPlayerStateChange
           }
         });
-    }
+}
+
+window.onload = function() {
+	var socket = io('https://synch-backend.herokuapp.com/');
+    var seeking = false, toggling = false;
+    var thisRoom = $("#thisRoom"), idButton = $("#roomIDButton"), pproom = $("#playPauseRoom"), join = $("#join");
 
     $("#search").autocomplete({
         source: function(request, response){
@@ -38,43 +33,9 @@ window.onload = function() {
             });
         },
         select: function( event, ui ) {
-            queryAndDisplayVideos(ui.item.label);
+            console.log(ui.item.label);
         }
     });
-
-    function queryAndDisplayVideos(term) {
-        $.ajax({
-            url: ytQuery + "&q=" + term,  
-            dataType: 'jsonp',
-            success: function(data) { 
-                var items = data["items"];
-                var sr = $("#searchResult").show().empty();
-                for(var i in items) {
-                    var obj = items[i];
-                    var vid = obj["id"]["videoId"];
-                    var desc = obj["snippet"]["description"];
-                    var thumb = obj["snippet"]["thumbnails"]["default"]["url"];
-                    var title = obj["snippet"]["title"];
-                    sr.append("<div class='sr'><a class='vidlink'><img id='" + vid + "'class='thumb' src='" + thumb + "'></a><span><b>" + title + "</b></span><br><span><p>" + desc + "</p></span></div>");
-                }
-
-                $(".vidlink").click(function() {
-                    $("#searchResult").fadeOut(300);
-                    
-                    var id = $(this).find('.thumb').attr("id");
-                    console.log(id);
-
-                    videoID = id;
-                
-                    
-                    player.loadVideoById(id);
-
-                });
-            }
-        });
-    }
-
-    
 
     join.click(function() {
         socket.emit("joinRoom", {roomID: $("#roomID").val()});
@@ -104,7 +65,7 @@ window.onload = function() {
     }
 
     function onPlayerReady(event) {
-        
+        //event.target.playVideo();
     }
 
     function onPlayerStateChange(event) {
