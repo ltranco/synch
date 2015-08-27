@@ -134,14 +134,12 @@ window.onload = function() {
     socket.on('pauseDone', function(data) {
         player.pauseVideo();
         pproom.text(data["output"]);
-        console.log(data["output"]);
         toggling = true;
     });
 
     socket.on('playDone', function(data) {
         player.playVideo();
         pproom.text(data["output"]);
-        console.log(data["output"]);
         toggling = true;
     });
 
@@ -175,7 +173,7 @@ window.onload = function() {
     }
 
     function updateRoomID(roomID) {
-        idButton.css("display", "inline-block").text("Room ID: " + roomID);
+        idButton.css("display", "inline-block").text("ID: " + roomID);
         $("#searchArea").show(300);
     }
 

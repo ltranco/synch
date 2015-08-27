@@ -2,6 +2,12 @@ body {
 	background-image: url("background.jpg");
 }
 
+.ui-state-focus {
+    color:White;
+    background:#96B202;
+    outline:none;
+}
+
 #roomIDButton, #searchArea, #vid {
 	display: none;
 }
