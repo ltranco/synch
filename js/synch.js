@@ -155,23 +155,27 @@ window.onload = function() {
         console.log("play done");
     });
 
-    socket.on('joinRoomDone', function(output) {
-      output = output["output"];
+    socket.on('joinRoomDone', function(output) {    
+        var isDisconnecting = output["disconnect"];
+        output = output["output"];
 
-      if(output == "nonexistent") {
+        if(output == "nonexistent") {
         nonexistent();
         return;
-      }
+        }
 
-      createNewPlayer(output["url"], output["time"]);
-      updateClientList(output["clientsList"]); 
-      updateRoomID(output["roomID"]);
+        if(!isDisconnecting) {
+        createNewPlayer(output["url"], output["time"]);  
+        }
+
+        updateClientList(output["clientsList"]); 
+        updateRoomID(output["roomID"]);
     });
 
     socket.on('newRoomDone', function(output) {
-      output = output["output"];
-      updateClientList(output["clientsList"]); 
-      updateRoomID(output["roomID"]);
+        output = output["output"];
+        updateClientList(output["clientsList"]); 
+        updateRoomID(output["roomID"]);
     });
 
     function nonexistent() {
