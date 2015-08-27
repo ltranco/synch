@@ -6,6 +6,9 @@ body {
 	display: none;
 }
 
+#roomID, #join {
+	display: inline-block;
+}
 #search {
 	width: 400px;
 	color: black;
