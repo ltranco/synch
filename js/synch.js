@@ -1,19 +1,3 @@
-    var tag = document.createElement("script");
-    tag.src = "//www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName("script")[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    var player;
-    window.onYouTubeIframeAPIReady = function() {
-        player = new YT.Player("player", {
-          "videoId": "PUP7U5vTMM0",
-          "events": {
-            "onReady": onPlayerReady,
-            "onStateChange": onPlayerStateChange
-          }
-        });
-}
-
 window.onload = function() {
 	var socket = io('https://synch-backend.herokuapp.com/');
     var seeking = false, toggling = false;
@@ -36,6 +20,22 @@ window.onload = function() {
             console.log(ui.item.label);
         }
     });
+
+    var tag = document.createElement("script");
+    tag.src = "//www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName("script")[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    window.onYouTubeIframeAPIReady = function() {
+        player = new YT.Player("player", {
+          "videoId": "PUP7U5vTMM0",
+          "events": {
+            "onReady": onPlayerReady,
+            "onStateChange": onPlayerStateChange
+          }
+        });
+    }
 
     join.click(function() {
         socket.emit("joinRoom", {roomID: $("#roomID").val()});
