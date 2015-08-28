@@ -55,6 +55,7 @@ window.onload = function() {
 
     //Query for videos based on search term and display them
     function queryAndDisplayVideos(term) {
+        console.log("looking for " + term);
         $.ajax({
             url: ytQuery + "&q=" + term,  
             dataType: 'jsonp',
