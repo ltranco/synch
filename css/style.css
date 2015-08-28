@@ -84,6 +84,10 @@ table {
     margin-bottom: 40px;
 }
 
+#pproom {
+	text-align: center;
+}
+
 #player {
 	position: absolute;
     top:0;
