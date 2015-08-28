@@ -5,6 +5,7 @@ window.onload = function() {
     var myAPIKey = "AIzaSyAO9KlVoJU7WMqGsFuL5HiJgRg19hCrkCw";
     var ytQuery = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&type=video&key=" + myAPIKey;
     var myInterval;
+
     //Autocomplete for search box
     $("#search").autocomplete({
         source: function(request, response){
@@ -46,6 +47,10 @@ window.onload = function() {
 
     $("#new").click(function() {
         socket.emit("newRoom");
+    });
+
+    $("#searchYT").click(function() {
+        queryAndDisplayVideos($("#search").val());
     });
 
     //Query for videos based on search term and display them
