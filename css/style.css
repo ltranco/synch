@@ -63,12 +63,9 @@ table {
 
 #searchResult img {
 	float: left;
+	margin: 0 5px 5px 0;
 }
 
 .thumb:hover{
 	cursor: pointer;
-}
-
-#searchResult p {
-	margin: 1px;
 }
