@@ -69,3 +69,7 @@ table {
 .thumb:hover{
 	cursor: pointer;
 }
+
+#searchResult p {
+	margin: 0;
+}
