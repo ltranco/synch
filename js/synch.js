@@ -62,7 +62,7 @@ window.onload = function() {
                     var desc = obj["snippet"]["description"];
                     var thumb = obj["snippet"]["thumbnails"]["default"]["url"];
                     var title = obj["snippet"]["title"];
-                    sr.append("<tr><td><a class='vidlink'><img id='" + vid + "'class='thumb' src='" + thumb + "'></a></td><td><b>" + title + "</b><p>" + desc + "</p></td></tr>");
+                    sr.append("<tr><td><a class='vidlink'><img id='" + vid + "' class='thumb' src='" + thumb + "'></a><b>" + title + "</b><p>" + desc + "</p></td></tr>");
                 }
 
                 $(".vidlink").click(function() {
