@@ -58,16 +58,9 @@ table {
 
 #searchResult {
 background-color: white;
-}
 
-#searchResult img {
-	float: left;
 }
 
 .thumb:hover{
 	cursor: pointer;
-}
-
-#searchResult p {
-	margin: 1px;
 }
