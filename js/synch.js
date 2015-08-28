@@ -55,7 +55,7 @@ window.onload = function() {
             dataType: 'jsonp',
             success: function(data) { 
                 var items = data["items"];
-                var sr = $("#searchResult").css("display", "block").empty();
+                var sr = $("#searchResult").empty();
                 for(var i in items) {
                     var obj = items[i];
                     var vid = obj["id"]["videoId"];
