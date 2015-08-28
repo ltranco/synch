@@ -193,7 +193,3 @@ window.onload = function() {
         $("#joining").hide();
     }
 }
-
-//http://jsfiddle.net/hnkK7/
-//https://gist.github.com/mahemoff/443933
-//https://developers.google.com/youtube/iframe_api_reference
