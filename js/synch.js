@@ -116,6 +116,7 @@ window.onload = function() {
           }
         });
         videoDiv.show();
+        $("#pproom").show();
     }
 
     pproom.click(function() {
