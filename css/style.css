@@ -52,14 +52,13 @@ table {
     min-width: 100%;
 }
 
-#init, #searchResult {
+#init {
 	margin: 30px 40px 40px 40px;
 }
 
 #searchResult {
 	display: none;
 	background-color: white;
-	padding: 30px 30px 30px 30px;
 }
 
 #searchResult img {
