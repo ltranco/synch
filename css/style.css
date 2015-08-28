@@ -57,10 +57,19 @@ table {
 }
 
 #searchResult {
-background-color: white;
+	display: none;
+	background-color: white;
+	width: 100% !important;
+}
 
+#searchResult img {
+	float: left;
 }
 
 .thumb:hover{
 	cursor: pointer;
+}
+
+#searchResult p {
+	margin: 1px;
 }
