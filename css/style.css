@@ -9,6 +9,9 @@ table {
 	display: none;
 }
 
+#join, #new {
+	margin-bottom: 5px;
+}
 #searchArea {
 	margin-top: 25px;
 }
