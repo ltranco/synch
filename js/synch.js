@@ -1,10 +1,11 @@
 window.onload = function() {
 	var socket = io('https://synch-backend.herokuapp.com/');
     var seeking = false, toggling = false;
-    var thisRoom = $("#thisRoom"), idButton = $("#roomIDButton"), pproom = $("#playPauseRoom"), join = $("#join"), videoDiv = $("#vid");
+    var thisRoom = $("#thisRoom"), idButton = $("#roomIDButton"), pproom = $("#playPauseRoom"), join = $("#join"), videoDiv = $("#vid"), loop = $("#loop");
     var myAPIKey = "AIzaSyAO9KlVoJU7WMqGsFuL5HiJgRg19hCrkCw";
     var ytQuery = "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&type=video&key=" + myAPIKey;
     var myInterval;
+    var loopFlag = false;
 
     //Autocomplete for search box
     $("#search").autocomplete({
@@ -40,6 +41,26 @@ window.onload = function() {
           }
         });
     }
+
+    //Repeat control options
+    loop.click(function() {
+        if($(this).text() == "Repeat: Off") {
+            socket.emit("repeatOn");
+        }
+        else {
+            socket.emit("repeatOff");
+        }
+    });
+    socket.on("repeatOffDone", function() {
+        loopFlag = false;
+        console.log("Turning repeat off");
+        loop.text("Repeat: Off");
+    });
+    socket.on("repeatOnDone", function(data) {
+        loopFlag = true;
+        console.log("Turning repeat on");
+        loop.text("Repeat: On");
+    });
 
     join.click(function() {
         socket.emit("joinRoom", {roomID: $("#roomID").val()});
@@ -93,7 +114,10 @@ window.onload = function() {
             seeking = false;
             toggling = false;
         }
-
+        else if(event.data === YT.PlayerState.ENDED && loopFlag) {
+            player.seekTo(0);
+            player.playVideo();
+        }
     }
 
     socket.on("videoSelectedDone", function(data) {
