@@ -113,6 +113,10 @@ window.onload = function() {
             }
             seeking = false;
             toggling = false;
+            pproom.text("Pause entire room");
+        }
+        else if (event.data == YT.PlayerState.PAUSED) {
+            pproom.text("Play entire room");   
         }
         else if(event.data === YT.PlayerState.ENDED && loopFlag) {
             player.seekTo(0);

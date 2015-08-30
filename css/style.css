@@ -5,6 +5,14 @@ body {
 table {
 	width: inherit !important;
 }
+
+.ui-state-focus {
+    background: #d3d3d3 !important;
+    font-weight: 700 !important;
+    border: 0px solid white !important;
+    color: black !important;
+}
+
 #roomIDButton, #searchArea, #vid {
 	display: none;
 }
@@ -56,6 +64,9 @@ table {
 	margin: 30px 40px 40px 40px;
 }
 
+#playPauseRoom {
+	width: 216px !important;
+}
 #searchResult {
 	background-color: white;
 	width: 100% !important;
