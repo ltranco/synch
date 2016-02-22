@@ -65,6 +65,7 @@ window.onload = function() {
     });
 
     $("#new").click(function() {
+        $("#new").html("<img width=\"30\" height=\"30\" src=\"css/ring.gif\">");
         socket.emit("newRoom");
     });
 
