@@ -28,7 +28,7 @@ window.onload = function() {
 
     //Initializing YouTube API Player
     var tag = document.createElement("script");
-    tag.src = "//www.youtube.com/iframe_api";
+    tag.src = "http://www.youtube.com/iframe_api";
     var firstScriptTag = document.getElementsByTagName("script")[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     var player;
@@ -53,12 +53,10 @@ window.onload = function() {
     });
     socket.on("repeatOffDone", function() {
         loopFlag = false;
-        console.log("Turning repeat off");
         loop.text("Repeat: Off");
     });
     socket.on("repeatOnDone", function(data) {
         loopFlag = true;
-        console.log("Turning repeat on");
         loop.text("Repeat: On");
     });
 
@@ -76,7 +74,6 @@ window.onload = function() {
 
     //Query for videos based on search term and display them
     function queryAndDisplayVideos(term) {
-        console.log("looking for " + term);
         $.ajax({
             url: ytQuery + "&q=" + term,  
             dataType: 'jsonp',
@@ -125,7 +122,6 @@ window.onload = function() {
     }
 
     socket.on("videoSelectedDone", function(data) {
-        console.log("video selected done");
         createNewPlayer(data["vid"]);
     });
 
@@ -188,7 +184,6 @@ window.onload = function() {
         }
 
         if(!isDisconnecting) {
-            console.log("time " + output["time"])
             createNewPlayer(output["url"], parseFloat(output["time"]));  
         }
 
