@@ -12,7 +12,7 @@ window.onload = function() {
         source: function(request, response){
             var apiKey = 'AI39si7ZLU83bKtKd4MrdzqcjTVI3DK9FvwJR6a4kB_SW_Dbuskit-mEYqskkSsFLxN5DiG1OBzdHzYfW0zXWjxirQKyxJfdkg';
             $.ajax({
-                url: "http://suggestqueries.google.com/complete/search?hl=en&ds=yt&client=youtube&hjson=t&cp=1&q="+request.term+"&key="+apiKey+"&format=5&alt=json&callback=?",  
+                url: "https://suggestqueries.google.com/complete/search?hl=en&ds=yt&client=youtube&hjson=t&cp=1&q="+request.term+"&key="+apiKey+"&format=5&alt=json&callback=?",  
                 dataType: 'jsonp',
                 success: function(data, textStatus, request) { 
                    response( $.map(data[1], function(item) {
